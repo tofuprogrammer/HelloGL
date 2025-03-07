@@ -23,7 +23,7 @@ void HelloGL::Display()
 	glColor3f(1.0f, 0.0f, 1.0f); // Pink
 	glVertex2f(-0.75, 0.5);
 	glVertex2f(0.75, 0.5);
-	glColor3f(1.0f, 1.0f, 0.0f); // Bronze
+	glColor3f(1.0f, 1.0f, 0.0f); // Brown
 	glVertex2f(0.75, -0.5);
 	glVertex2f(-0.75, -0.5);
 	glEnd();
