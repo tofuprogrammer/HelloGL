@@ -17,4 +17,5 @@ public:
 	~HelloGL(void);
 
 	void Display();
+	void DrawPolygon();
 };
