@@ -42,11 +42,11 @@ void HelloGL::DrawPolygon() {
 	glBegin(GL_QUADS);
 		// Rectangle
 		glColor3f(1.0f, 0.0f, 1.0f); // Pink
-		glVertex2f(-0.85, 0.5);
-		glVertex2f(-0.95, 0.5);
+		glVertex2f(-0.6, 0.5);
+		glVertex2f(-0.9, 0.5);
 		glColor3f(1.0f, 1.0f, 0.0f); // Yellow
-		glVertex2f(-0.95, -0.5);
-		glVertex2f(-0.85, -0.5);
+		glVertex2f(-0.9, -0.5);
+		glVertex2f(-0.6, -0.5);
 		glEnd();
 
 	glPopMatrix();
@@ -57,10 +57,10 @@ void HelloGL::DrawPolygon() {
 	glBegin(GL_TRIANGLES); 
 		// Equilateral triangle
 		glColor3f(1.0f, 1.0f, 1.0f); // White
-		glVertex2f(-0.75, -0.4);
+		glVertex2f(0.75, 0.15);
 		glColor3f(1.0f, 0.0f, 0.5f); // Red-pink
-		glVertex2f(-0.8, -0.5);
-		glVertex2f(-0.7, -0.5);
+		glVertex2f(0.6, -0.15);
+		glVertex2f(0.9, -0.15);
 		glEnd();
 
 	glPopMatrix();
