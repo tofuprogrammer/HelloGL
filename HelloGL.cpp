@@ -49,6 +49,11 @@ void HelloGL::DrawPolygon() {
 		glVertex2f(-0.85, -0.5);
 		glEnd();
 
+	glPopMatrix();
+
+	glPushMatrix();
+	glRotatef(rotation, 0.0f, 0.0f, 1.0f);
+
 	glBegin(GL_TRIANGLES); 
 		// Equilateral triangle
 		glColor3f(1.0f, 1.0f, 1.0f); // White
