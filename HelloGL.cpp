@@ -40,14 +40,14 @@ void HelloGL::DrawPolygon() {
 	glRotatef(rotation, 0.0f, 0.0f, -1.0f);
 
 	glBegin(GL_QUADS);
-		// Rectangle
-		glColor3f(1.0f, 0.0f, 1.0f); // Pink
-		glVertex2f(-0.6, 0.5);
-		glVertex2f(-0.9, 0.5);
-		glColor3f(1.0f, 1.0f, 0.0f); // Yellow
-		glVertex2f(-0.9, -0.5);
-		glVertex2f(-0.6, -0.5);
-		glEnd();
+	// Rectangle
+	glColor3f(1.0f, 0.0f, 1.0f); // Pink
+	glVertex2f(-0.5, 0.5);
+	glVertex2f(-0.9, 0.5);
+	glColor3f(1.0f, 1.0f, 0.0f); // Yellow
+	glVertex2f(-0.9, -0.5);
+	glVertex2f(-0.5, -0.5);
+	glEnd();
 
 	glPopMatrix();
 
@@ -55,13 +55,28 @@ void HelloGL::DrawPolygon() {
 	glRotatef(rotation, 0.0f, 0.0f, 1.0f);
 
 	glBegin(GL_TRIANGLES); 
-		// Equilateral triangle
-		glColor3f(1.0f, 1.0f, 1.0f); // White
-		glVertex2f(0.75, 0.15);
-		glColor3f(1.0f, 0.0f, 0.5f); // Red-pink
-		glVertex2f(0.6, -0.15);
-		glVertex2f(0.9, -0.15);
-		glEnd();
+	// Equilateral triangle
+	glColor3f(1.0f, 1.0f, 1.0f); // White
+	glVertex2f(0.75, 0.15);
+	glColor3f(1.0f, 0.0f, 0.5f); // Red-pink
+	glVertex2f(0.5, -0.15);
+	glVertex2f(0.9, -0.15);
+	glEnd();
+
+	glPopMatrix();
+
+	glPushMatrix();
+	glRotatef(rotation, 0.0f, 0.0f, 1.0f);
+
+	glBegin(GL_QUADS);
+	// Square
+	glColor3f(0.0f, 1.0f, 1.0f); // Cyan
+	glVertex2f(0.4, 0.4);
+	glVertex2f(-0.4, 0.4);
+	glColor3f(0.0f, 0.0f, 1.0f); // Blue
+	glVertex2f(-0.4, -0.4);
+	glVertex2f(0.4, -0.4);
+	glEnd();
 
 	glPopMatrix();
 }
