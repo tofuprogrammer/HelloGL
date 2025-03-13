@@ -15,4 +15,11 @@ namespace GLUTCallbacks {
 			helloGL->Display();
 		}
 	}
+
+	void Timer(int preferredRefresh) {
+		if (helloGL != nullptr) {
+			helloGL->Update();
+			glutTimerFunc(preferredRefresh, GLUTCallbacks::Timer, preferredRefresh);
+		}
+	}
 }

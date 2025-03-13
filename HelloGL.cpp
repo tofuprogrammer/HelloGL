@@ -1,11 +1,13 @@
 #include "HelloGL.hpp"
 
 HelloGL::HelloGL(int argc, char* argv[]) {
+	rotation = 0.0f;
 	GLUTCallbacks::Init(this); // Initializes the callback function
 	glutInit(&argc, argv); // Initializes the GLUT library
 	glutInitWindowSize(1920, 1080); // Sets the window size
 	glutCreateWindow("HelloGL");
 	glutDisplayFunc(GLUTCallbacks::Display);
+	glutTimerFunc(REFRESHRATE, GLUTCallbacks::Timer, REFRESHRATE);
 	glutMainLoop();
 }
 
@@ -18,12 +20,25 @@ HelloGL::~HelloGL(void) {
 
 void HelloGL::Display()
 {
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT); // Clears the color buffer
+
 	DrawPolygon();
-	glFlush();
+
+	glFlush(); // Flushes the buffer to the GPU
+}
+
+void HelloGL::Update() {
+	rotation += 2.0f;
+	if (rotation >= 360) {
+		rotation = 0.0f;
+	}
+	glutPostRedisplay();
 }
 
 void HelloGL::DrawPolygon() {
+	glPushMatrix();
+	glRotatef(rotation, 0.0f, 0.0f, -1.0f);
+
 	glBegin(GL_QUADS);
 		// Rectangle
 		glColor3f(1.0f, 0.0f, 1.0f); // Pink
@@ -43,4 +58,5 @@ void HelloGL::DrawPolygon() {
 		glVertex2f(-0.7, -0.5);
 		glEnd();
 
+	glPopMatrix();
 }
