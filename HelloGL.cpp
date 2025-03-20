@@ -2,6 +2,10 @@
 
 HelloGL::HelloGL(int argc, char* argv[]) {
 	rotation = 0.0f;
+	camera = new Camera();
+	camera->eye = { 0.0f, 0.0f, 1.0f };
+	camera->center = { 0.0f, 0.0f, 0.0f };
+	camera->up = { 0.0f, 1.0f, 0.0f };
 	GLUTCallbacks::Init(this); // Initializes the callback function
 	glutInit(&argc, argv); // Initializes the GLUT library
 	glutInitDisplayMode(GLUT_DOUBLE); // Sets the display mode (enables double buffering)
@@ -24,6 +28,7 @@ int main(int argc, char* argv[]) {
 }
 
 HelloGL::~HelloGL(void) {
+	delete camera;
 }
 
 void HelloGL::Display()
