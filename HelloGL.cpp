@@ -4,8 +4,10 @@ HelloGL::HelloGL(int argc, char* argv[]) {
 	rotation = 0.0f;
 	GLUTCallbacks::Init(this); // Initializes the callback function
 	glutInit(&argc, argv); // Initializes the GLUT library
-	glutInitWindowSize(1920, 1080); // Sets the window size
-	glutCreateWindow("HelloGL");
+	glutInitDisplayMode(GLUT_DOUBLE); // Sets the display mode (enables double buffering)
+	glutInitWindowSize(1000, 1000); // Sets the window size
+	glutInitWindowPosition(100, 100); // Sets the window position
+	glutCreateWindow("Simple OpenGL Program");
 	glutDisplayFunc(GLUTCallbacks::Display);
 	glutTimerFunc(REFRESHRATE, GLUTCallbacks::Timer, REFRESHRATE);
 	glutMainLoop();
@@ -25,6 +27,8 @@ void HelloGL::Display()
 	DrawPolygon();
 
 	glFlush(); // Flushes the buffer to the GPU
+
+	glutSwapBuffers(); // Swaps the buffers
 }
 
 void HelloGL::Update() {
@@ -66,7 +70,6 @@ void HelloGL::DrawPolygon() {
 	glPopMatrix();
 
 	glPushMatrix();
-	glRotatef(rotation, 0.0f, 0.0f, 1.0f);
 
 	glBegin(GL_QUADS);
 	// Square
