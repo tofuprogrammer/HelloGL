@@ -3,9 +3,9 @@
 HelloGL::HelloGL(int argc, char* argv[]) {
 	rotation = 0.0f;
 	camera = new Camera();
-	camera->eye = { 0.0f, 0.0f, 1.0f };
-	camera->center = { 0.0f, 0.0f, 0.0f };
-	camera->up = { 0.0f, 1.0f, 0.0f };
+	camera->eye.x = 0.0f; camera->eye.y = 0.0f; camera->eye.z = 1.0f;
+	camera->center.x = 0.0f; camera->eye.y = 0.0f; camera->eye.z = 0.0f;
+	camera->up.x = 0.0f; camera->up.y = 1.0f; camera->up.z = 0.0f;
 	GLUTCallbacks::Init(this); // Initializes the callback function
 	glutInit(&argc, argv); // Initializes the GLUT library
 	glutInitDisplayMode(GLUT_DOUBLE); // Sets the display mode (enables double buffering)
@@ -35,8 +35,7 @@ void HelloGL::Display()
 {
 	glClear(GL_COLOR_BUFFER_BIT); // Clears the color buffer
 
-	// DrawPolygon();
-	DrawTorus();
+	DrawPolygon();
 
 	glFlush(); // Flushes the buffer to the GPU
 
@@ -45,6 +44,7 @@ void HelloGL::Display()
 
 void HelloGL::Update() {
 	glLoadIdentity();
+	gluLookAt(camera->eye.x, camera->eye.y, camera->eye.z, camera->center.x, camera->center.y, camera->center.z, camera->up.x, camera->up.y, camera->up.z);
 	if (rotation >= 360) {
 		rotation = 0.0f;
 	}
@@ -111,6 +111,18 @@ void HelloGL::DrawTorus() {
 void HelloGL::Keyboard(unsigned char key, int x, int y) {
 	if (key == 'd')
 		rotation += 2.0f;
-	else if (key == 'a')
+	if (key == 'a')
 		rotation -= 2.0f;
+	if (key == 'j')
+		camera->eye.x -= 2.0f;
+	if (key == 'l')
+		camera->eye.x += 2.0f;
+	if (key == 'p')
+		camera->eye.y += 2.0f;
+	if (key == '.')
+		camera->eye.y -= 2.0f;
+	if (key == '=')
+		camera->eye.z += 2.0f;
+	if (key == '-')
+		camera->eye.z -= 2.0f;
 }
