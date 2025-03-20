@@ -37,7 +37,8 @@ public:
 
 	void Display();
 	void DrawPolygon();
+	void DrawTorus();
 	void Update();
-	void keyboard(unsigned char key, int x, int y);
+	void Keyboard(unsigned char key, int x, int y);
 
 };

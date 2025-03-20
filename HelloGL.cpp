@@ -35,7 +35,8 @@ void HelloGL::Display()
 {
 	glClear(GL_COLOR_BUFFER_BIT); // Clears the color buffer
 
-	DrawPolygon();
+	// DrawPolygon();
+	DrawTorus();
 
 	glFlush(); // Flushes the buffer to the GPU
 
@@ -99,7 +100,15 @@ void HelloGL::DrawPolygon() {
 	glPopMatrix();
 }
 
-void HelloGL::keyboard(unsigned char key, int x, int y) {
+void HelloGL::DrawTorus() {
+	glPushMatrix();
+	glTranslatef(0.0f, 0.0f, -5.0f);
+	glRotatef(rotation, 1.0f, 1.0f, 1.0f);
+	glutWireTorus(0.4, 1.0, 50, 50);
+	glPopMatrix();
+}
+
+void HelloGL::Keyboard(unsigned char key, int x, int y) {
 	if (key == 'd')
 		rotation += 2.0f;
 	else if (key == 'a')

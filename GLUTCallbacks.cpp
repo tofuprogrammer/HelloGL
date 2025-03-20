@@ -27,7 +27,7 @@ namespace GLUTCallbacks {
 
 	void Keyboard(unsigned char key, int x, int y) {
 		if (helloGL != nullptr) {
-			helloGL->keyboard(key, x, y);
+			helloGL->Keyboard(key, x, y);
 		}
 	}
 }
