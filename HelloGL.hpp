@@ -10,6 +10,9 @@
 
 class HelloGL
 {
+	
+	float rotation;
+
 public:
 
 	//Constructor definition
@@ -21,8 +24,5 @@ public:
 	void Display();
 	void DrawPolygon();
 	void Update();
-
-private:
-
-	float rotation;
+	void keyboard(unsigned char key, int x, int y);
 };
