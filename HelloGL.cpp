@@ -11,7 +11,12 @@ HelloGL::HelloGL(int argc, char* argv[]) {
 	glutDisplayFunc(GLUTCallbacks::Display);
 	glutTimerFunc(REFRESHRATE, GLUTCallbacks::Timer, REFRESHRATE);
 	glutKeyboardFunc(GLUTCallbacks::Keyboard);
-	glutMainLoop();
+	glMatrixMode(GL_PROJECTION); // Switches to the projection matrix
+	glLoadIdentity(); // Loads the identity matrix
+	glViewport(0, 0, 1000, 1000); // Sets the viewport to match the window
+	gluPerspective(45, 1, 1, 1000); // Sets the perspective projection, 1000); // Sets the perspective projection
+	glMatrixMode(GL_MODELVIEW); // Switches to the modelview matrix
+	glutMainLoop(); // Enters the GLUT main loop
 }
 
 int main(int argc, char* argv[]) {
@@ -33,6 +38,7 @@ void HelloGL::Display()
 }
 
 void HelloGL::Update() {
+	glLoadIdentity();
 	if (rotation >= 360) {
 		rotation = 0.0f;
 	}
@@ -41,7 +47,8 @@ void HelloGL::Update() {
 
 void HelloGL::DrawPolygon() {
 	glPushMatrix();
-	glRotatef(rotation, 0.0f, 0.0f, -1.0f);
+	glTranslatef(0.0f, 0.0f, -5.0f);
+	glRotatef(rotation, -1.0f, -1.0f, -1.0f);
 
 	glBegin(GL_QUADS);
 	// Rectangle
@@ -56,7 +63,8 @@ void HelloGL::DrawPolygon() {
 	glPopMatrix();
 
 	glPushMatrix();
-	glRotatef(rotation, 0.0f, 0.0f, 1.0f);
+	glTranslatef(0.0f, 0.0f, -5.0f);
+	glRotatef(rotation, 1.0f, 1.0f, 1.0f);
 
 	glBegin(GL_TRIANGLES); 
 	// Equilateral triangle
@@ -70,6 +78,8 @@ void HelloGL::DrawPolygon() {
 	glPopMatrix();
 
 	glPushMatrix();
+	glTranslatef(0.0f, 0.0f, -5.0f);
+	glRotatef(rotation, 1.0f, -1.0f, 1.0f);
 
 	glBegin(GL_QUADS);
 	// Square
