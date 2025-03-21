@@ -3,7 +3,7 @@
 HelloGL::HelloGL(int argc, char* argv[]) {
 	rotation = 0.0f;
 	camera = new Camera();
-	camera->eye.x = 0.0f; camera->eye.y = 0.0f; camera->eye.z = 1.0f;
+	camera->eye.x = 5.0f; camera->eye.y = 5.0f; camera->eye.z = -5.0f;
 	camera->center.x = 0.0f; camera->center.y = 0.0f; camera->center.z = 0.0f;
 	camera->up.x = 0.0f; camera->up.y = 1.0f; camera->up.z = 0.0f;
 	GLUTCallbacks::Init(this); // Initializes the callback function
@@ -21,6 +21,8 @@ HelloGL::HelloGL(int argc, char* argv[]) {
 	gluPerspective(45, 1, 1, 1000); // Sets the perspective projection
 	glMatrixMode(GL_MODELVIEW); // Switches to the modelview matrix
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Sets the clear color to black
+	glEnable(GL_CULL_FACE); // Enables backface culling
+	glCullFace(GL_BACK); // Culls the backface
 
 	glutMainLoop(); // Enters the GLUT main loop
 }
@@ -37,7 +39,9 @@ void HelloGL::Display()
 {
 	glClear(GL_COLOR_BUFFER_BIT); // Clears the color buffer
 
-	DrawPolygon();
+	// DrawPolygon();
+	// DrawTorus();
+	DrawCube();
 
 	glFlush(); // Flushes the buffer to the GPU
 
@@ -107,6 +111,112 @@ void HelloGL::DrawTorus() {
 	glTranslatef(0.0f, 0.0f, -5.0f);
 	glRotatef(rotation, 1.0f, 1.0f, 1.0f);
 	glutWireTorus(0.4, 1.0, 50, 50);
+	glPopMatrix();
+}
+
+void HelloGL::DrawCube() {
+	glPushMatrix();
+	glRotatef(rotation, -1.0f, -1.0f, -1.0f);
+
+	glBegin(GL_TRIANGLES);
+	// face v0-v1-v2
+	glColor3f(1, 1, 1);
+	glVertex3f(1, 1, 1);
+	glColor3f(1, 1, 0);
+	glVertex3f(-1, 1, 1);
+	glColor3f(1, 0, 0);
+	glVertex3f(-1, -1, 1);
+
+	// face v2-v3-v0
+	glColor3f(1, 0, 0);
+	glVertex3f(-1, -1, 1);
+	glColor3f(1, 0, 1);
+	glVertex3f(1, -1, 1);
+	glColor3f(1, 1, 1);
+	glVertex3f(1, 1, 1);
+
+	// face v0-v3-v4
+	glColor3f(1, 1, 1);
+	glVertex3f(1, 1, 1);
+	glColor3f(1, 0, 1);
+	glVertex3f(1, -1, 1);
+	glColor3f(0, 0, 1);
+	glVertex3f(1, -1, -1);
+
+	// face v4-v5-v0
+	glColor3f(0, 0, 1);
+	glVertex3f(1, -1, -1);
+	glColor3f(0, 1, 1);
+	glVertex3f(1, 1, -1);
+	glColor3f(1, 1, 1);
+	glVertex3f(1, 1, 1);
+
+	// face v0-v5-v6
+	glColor3f(1, 1, 1);
+	glVertex3f(1, 1, 1);
+	glColor3f(0, 1, 1);
+	glVertex3f(1, 1, -1);
+	glColor3f(0, 1, 0);
+	glVertex3f(-1, 1, -1);
+
+	// face v6-v1-v0
+	glColor3f(0, 1, 0);
+	glVertex3f(-1, 1, -1);
+	glColor3f(1, 1, 0);
+	glVertex3f(-1, 1, 1);
+	glColor3f(1, 1, 1);
+	glVertex3f(1, 1, 1);
+
+	// face v1-v6-v7
+	glColor3f(1, 1, 0);
+	glVertex3f(-1, 1, 1);
+	glColor3f(0, 1, 0);
+	glVertex3f(-1, 1, -1);
+	glColor3f(0, 0, 0);
+	glVertex3f(-1, -1, -1);
+
+	// face v7-v2-v1
+	glColor3f(0, 0, 0);
+	glVertex3f(-1, -1, -1);
+	glColor3f(1, 0, 0);
+	glVertex3f(-1, -1, 1);
+	glColor3f(1, 1, 0);
+	glVertex3f(-1, 1, 1);
+
+	// face v7-v4-v3
+	glColor3f(0, 0, 0);
+	glVertex3f(-1, -1, -1);
+	glColor3f(0, 0, 1);
+	glVertex3f(1, -1, -1);
+	glColor3f(1, 0, 1);
+	glVertex3f(1, -1, 1);
+
+	// face v3-v2-v7
+	glColor3f(1, 0, 1);
+	glVertex3f(1, -1, 1);
+	glColor3f(1, 0, 0);
+	glVertex3f(-1, -1, 1);
+	glColor3f(0, 0, 0);
+	glVertex3f(-1, -1, -1);
+
+	// face v4-v7-v6
+	glColor3f(0, 0, 1);
+	glVertex3f(1, -1, -1);
+	glColor3f(0, 0, 0);
+	glVertex3f(-1, -1, -1);
+	glColor3f(0, 1, 0);
+	glVertex3f(-1, 1, -1);
+
+	// face v6-v5-v4
+	glColor3f(0, 1, 0);
+	glVertex3f(-1, 1, -1);
+	glColor3f(0, 1, 1);
+	glVertex3f(1, 1, -1);
+	glColor3f(0, 0, 1);
+	glVertex3f(1, -1, -1);
+
+	glEnd();
+
 	glPopMatrix();
 }
 

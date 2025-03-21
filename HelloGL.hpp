@@ -38,6 +38,7 @@ public:
 	void Display();
 	void DrawPolygon();
 	void DrawTorus();
+	void DrawCube();
 	void Update();
 	void Keyboard(unsigned char key, int x, int y);
 
