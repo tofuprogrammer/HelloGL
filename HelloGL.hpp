@@ -10,9 +10,7 @@
 
 class Vector3 {
 public:
-
 	float x, y, z;
-	
 };
 
 class Camera {
@@ -26,9 +24,10 @@ class HelloGL
 {
 	Camera* camera;
 	float rotation;
+	static Vertex vertices[];
+	static Colour colours[];
 
 public:
-
 	//Constructor definition
 	HelloGL(int argc, char* argv[]);
 
@@ -39,7 +38,17 @@ public:
 	void DrawPolygon();
 	void DrawTorus();
 	void DrawCube();
+	void DrawCubeArray();
 	void Update();
 	void Keyboard(unsigned char key, int x, int y);
+};
 
+class Colour {
+public:
+	GLfloat r, g, b;
+};
+
+class Vertex {
+public:
+	GLfloat x, y, z;
 };
