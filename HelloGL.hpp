@@ -35,7 +35,12 @@ class HelloGL
     Camera* camera;
     float rotation;
     static Vertex vertices[];
+	static Vertex indexedVertices[];
+
     static Colour colours[];
+	static Colour indexedColours[];
+
+	static GLushort indices[];
 
 public:
     //Constructor definition
@@ -49,6 +54,7 @@ public:
     void DrawTorus();
     void DrawCube();
     void DrawCubeArray();
+	void DrawIndexedCube();
     void Update();
     void Keyboard(unsigned char key, int x, int y);
 };
