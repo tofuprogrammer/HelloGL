@@ -4,7 +4,7 @@ HelloGL::HelloGL(int argc, char* argv[]) {
 	rotation = 0.0f;
 	camera = new Camera();
 	camera->eye.x = 0.0f; camera->eye.y = 0.0f; camera->eye.z = 1.0f;
-	camera->center.x = 0.0f; camera->eye.y = 0.0f; camera->eye.z = 0.0f;
+	camera->center.x = 0.0f; camera->center.y = 0.0f; camera->center.z = 0.0f;
 	camera->up.x = 0.0f; camera->up.y = 1.0f; camera->up.z = 0.0f;
 	GLUTCallbacks::Init(this); // Initializes the callback function
 	glutInit(&argc, argv); // Initializes the GLUT library
@@ -18,8 +18,10 @@ HelloGL::HelloGL(int argc, char* argv[]) {
 	glMatrixMode(GL_PROJECTION); // Switches to the projection matrix
 	glLoadIdentity(); // Loads the identity matrix
 	glViewport(0, 0, 1000, 1000); // Sets the viewport to match the window
-	gluPerspective(45, 1, 1, 1000); // Sets the perspective projection, 1000); // Sets the perspective projection
+	gluPerspective(45, 1, 1, 1000); // Sets the perspective projection
 	glMatrixMode(GL_MODELVIEW); // Switches to the modelview matrix
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Sets the clear color to black
+
 	glutMainLoop(); // Enters the GLUT main loop
 }
 
