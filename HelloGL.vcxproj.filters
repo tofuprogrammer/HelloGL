@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="HelloGL.hpp">
+    <ClInclude Include="GLUTCallbacks.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GLUTCallbacks.hpp">
+    <ClInclude Include="Classes.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -27,6 +27,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GLUTCallbacks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cube.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

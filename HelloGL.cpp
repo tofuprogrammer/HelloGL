@@ -1,4 +1,6 @@
-#include "HelloGL.hpp"
+#include "Classes.hpp"
+
+#define REFRESHRATE 8
 
 Vertex HelloGL::vertices[] = {
 1, 1, 1, -1, 1, 1, -1,-1, 1, // v0-v1-v2 (front)
@@ -105,7 +107,9 @@ void HelloGL::Display()
 	// DrawTorus();
 	// DrawCube();
 	// DrawCubeArray();
-	DrawIndexedCube();
+	// DrawIndexedCube();
+	// DrawCubeArrayAlt();
+	DrawIndexedCubeAlt();
 
 	glFlush(); // Flushes the buffer to the GPU
 
@@ -310,6 +314,37 @@ void HelloGL::DrawIndexedCube() {
 	glEnd();
 
 	glPopMatrix();
+}
+
+void HelloGL::DrawCubeArrayAlt()
+{
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_COLOR_ARRAY);
+	glVertexPointer(3, GL_FLOAT, 0, vertices);
+	glColorPointer(3, GL_FLOAT, 0, colours);
+
+	glPushMatrix();
+	glRotatef(rotation, -1.0f, -1.0f, -1.0f);
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+	glPopMatrix();
+
+	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_COLOR_ARRAY);
+}
+
+void HelloGL::DrawIndexedCubeAlt() {
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glEnableClientState(GL_COLOR_ARRAY);
+	glVertexPointer(3, GL_FLOAT, 0, indexedVertices);
+	glColorPointer(3, GL_FLOAT, 0, indexedColours);
+
+	glPushMatrix();
+	glRotatef(rotation, -1.0f, -1.0f, -1.0f);
+	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_SHORT, indices);
+	glPopMatrix();
+
+	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_COLOR_ARRAY);
 }
 
 void HelloGL::Keyboard(unsigned char key, int x, int y) {
