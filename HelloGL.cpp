@@ -62,7 +62,7 @@ void HelloGL::Update() {
 	}
 	glutPostRedisplay();
 }
-
+/*
 void HelloGL::DrawPolygon() {
 	glPushMatrix();
 	glTranslatef(0.0f, 0.0f, -5.0f);
@@ -269,7 +269,7 @@ void HelloGL::DrawCubeArrayAlt()
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_COLOR_ARRAY);
 }
-
+*/
 void HelloGL::DrawIndexedCubeAlt() {
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
