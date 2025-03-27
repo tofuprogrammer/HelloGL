@@ -31,6 +31,8 @@ public:
 class Cube
 {
 private:
+	static Vertex vertices[];
+	static Colour colours[];
 	static Vertex indexedVertices[];
 	static Colour indexedColours[];
 	static GLushort indices[];
