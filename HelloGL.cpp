@@ -5,12 +5,13 @@
 HelloGL::HelloGL(int argc, char* argv[]) {
 	rotation = 0.0f;
 	camera = new Camera();
+	cube = new Cube();
 	camera->eye.x = 5.0f; camera->eye.y = 5.0f; camera->eye.z = -5.0f;
 	camera->center.x = 0.0f; camera->center.y = 0.0f; camera->center.z = 0.0f;
 	camera->up.x = 0.0f; camera->up.y = 1.0f; camera->up.z = 0.0f;
 	GLUTCallbacks::Init(this); // Initializes the callback function
 	glutInit(&argc, argv); // Initializes the GLUT library
-	glutInitDisplayMode(GLUT_DOUBLE); // Sets the display mode (enables double buffering)
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH); // Sets the display mode (enables double buffering)
 	glutInitWindowSize(1000, 1000); // Sets the window size
 	glutInitWindowPosition(100, 100); // Sets the window position
 	glutCreateWindow("Simple OpenGL Program");
@@ -47,7 +48,7 @@ void HelloGL::Display()
 	// DrawCubeArray();
 	// DrawIndexedCube();
 	// DrawCubeArrayAlt();
-	DrawIndexedCubeAlt();
+	cube->Draw();
 
 	glFlush(); // Flushes the buffer to the GPU
 
@@ -57,6 +58,7 @@ void HelloGL::Display()
 void HelloGL::Update() {
 	glLoadIdentity();
 	gluLookAt(camera->eye.x, camera->eye.y, camera->eye.z, camera->center.x, camera->center.y, camera->center.z, camera->up.x, camera->up.y, camera->up.z);
+	cube->Update();
 	if (rotation >= 360) {
 		rotation = 0.0f;
 	}
@@ -270,20 +272,6 @@ void HelloGL::DrawCubeArrayAlt()
 	glDisableClientState(GL_COLOR_ARRAY);
 }
 */
-void HelloGL::DrawIndexedCubeAlt() {
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_COLOR_ARRAY);
-	glVertexPointer(3, GL_FLOAT, 0, indexedVertices);
-	glColorPointer(3, GL_FLOAT, 0, indexedColours);
-
-	glPushMatrix();
-	glRotatef(rotation, -1.0f, -1.0f, -1.0f);
-	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_SHORT, indices);
-	glPopMatrix();
-
-	glDisableClientState(GL_VERTEX_ARRAY);
-	glDisableClientState(GL_COLOR_ARRAY);
-}
 
 void HelloGL::Keyboard(unsigned char key, int x, int y) {
 	if (key == 'd')

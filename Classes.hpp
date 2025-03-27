@@ -31,6 +31,7 @@ public:
 class Cube
 {
 private:
+	GLfloat cubeRotation;
 	static Vertex vertices[];
 	static Colour colours[];
 	static Vertex indexedVertices[];
@@ -48,14 +49,8 @@ public:
 class HelloGL
 {
     Camera* camera;
+    Cube* cube;
     float rotation;
-    static Vertex vertices[];
-    static Vertex indexedVertices[];
-
-    static Colour colours[];
-    static Colour indexedColours[];
-
-    static GLushort indices[];
 
 public:
     //Constructor definition
@@ -73,7 +68,6 @@ public:
     void DrawIndexedCube();
     void DrawCubeArrayAlt();
     */
-    void DrawIndexedCubeAlt();
     void Update();
     void Keyboard(unsigned char key, int x, int y);
 };
