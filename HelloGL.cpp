@@ -5,7 +5,9 @@
 HelloGL::HelloGL(int argc, char* argv[]) {
 	rotation = 0.0f;
 	camera = new Camera();
-	cube = new Cube();
+	for (int iteration = 0; iteration < 200; iteration++) {
+		cube[iteration] = new Cube(((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
+	}
 	camera->eye.x = 5.0f; camera->eye.y = 5.0f; camera->eye.z = -5.0f;
 	camera->center.x = 0.0f; camera->center.y = 0.0f; camera->center.z = 0.0f;
 	camera->up.x = 0.0f; camera->up.y = 1.0f; camera->up.z = 0.0f;
@@ -24,6 +26,7 @@ HelloGL::HelloGL(int argc, char* argv[]) {
 	gluPerspective(45, 1, 1, 1000); // Sets the perspective projection
 	glMatrixMode(GL_MODELVIEW); // Switches to the modelview matrix
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Sets the clear color to black
+	glEnable(GL_DEPTH_TEST); // Enables depth testing
 	glEnable(GL_CULL_FACE); // Enables backface culling
 	glCullFace(GL_BACK); // Culls the backface
 
@@ -40,7 +43,7 @@ HelloGL::~HelloGL(void) {
 
 void HelloGL::Display()
 {
-	glClear(GL_COLOR_BUFFER_BIT); // Clears the color buffer
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clears the color buffer
 
 	// DrawPolygon();
 	// DrawTorus();

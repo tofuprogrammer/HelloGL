@@ -31,6 +31,7 @@ public:
 class Cube
 {
 private:
+	Vector3 position;
 	GLfloat cubeRotation;
 	static Vertex vertices[];
 	static Colour colours[];
@@ -39,7 +40,7 @@ private:
 	static GLushort indices[];
 
 public:
-	Cube();
+	Cube(float x, float y, float z);
 	~Cube();
 
 	void Draw();
