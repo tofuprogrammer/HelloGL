@@ -29,6 +29,7 @@ HelloGL::HelloGL(int argc, char* argv[]) {
 	glEnable(GL_DEPTH_TEST); // Enables depth testing
 	glEnable(GL_CULL_FACE); // Enables backface culling
 	glCullFace(GL_BACK); // Culls the backface
+	Cube::Load((char*) "cube.txt");
 
 	glutMainLoop(); // Enters the GLUT main loop
 }

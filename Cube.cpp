@@ -1,66 +1,14 @@
 #include "Classes.hpp"
+#include <fstream>
+#include <iostream>
 
-Vertex Cube::vertices[] = {
-1, 1, 1, -1, 1, 1, -1,-1, 1, // v0-v1-v2 (front)
--1,-1, 1, 1,-1, 1, 1, 1, 1, // v2-v3-v0
+int Cube::numVertices = 0;
+int Cube::numColours = 0;
+int Cube::numIndices = 0;
 
-1, 1, 1, 1,-1, 1, 1,-1,-1, // v0-v3-v4 (right)
-1,-1,-1, 1, 1,-1, 1, 1, 1, // v4-v5-v0
-
-1, 1, 1, 1, 1,-1, -1, 1,-1, // v0-v5-v6 (top)
--1, 1,-1, -1, 1, 1, 1, 1, 1, // v6-v1-v0
-
--1, 1, 1, -1, 1,-1, -1,-1,-1, // v1-v6-v7 (left)
--1,-1,-1, -1,-1, 1, -1, 1, 1, // v7-v2-v1
-
--1,-1,-1, 1,-1,-1, 1,-1, 1, // v7-v4-v3 (bottom)
-1,-1, 1, -1,-1, 1, -1,-1,-1, // v3-v2-v7
-
-1,-1,-1, -1,-1,-1, -1, 1,-1, // v4-v7-v6 (back)
--1, 1,-1, 1, 1,-1, 1,-1,-1 }; // v6-v5-v4
-
-Colour Cube::colours[] = {
-1, 1, 1, 1, 1, 0, 1, 0, 0, // v0-v1-v2 (front)
-1, 0, 0, 1, 0, 1, 1, 1, 1, // v2-v3-v0
-
-1, 1, 1, 1, 0, 1, 0, 0, 1, // v0-v3-v4 (right)
-0, 0, 1, 0, 1, 1, 1, 1, 1, // v4-v5-v0
-
-1, 1, 1, 0, 1, 1, 0, 1, 0, // v0-v5-v6 (top)
-0, 1, 0, 1, 1, 0, 1, 1, 1, // v6-v1-v0
-
-1, 1, 0, 0, 1, 0, 0, 0, 0, // v1-v6-v7 (left)
-0, 0, 0, 1, 0, 0, 1, 1, 0, // v7-v2-v1
-
-0, 0, 0, 0, 0, 1, 1, 0, 1, // v7-v4-v3 (bottom)
-1, 0, 1, 1, 0, 0, 0, 0, 0, // v3-v2-v7
-
-0, 0, 1, 0, 0, 0, 0, 1, 0, // v4-v7-v6 (back)
-0, 1, 0, 0, 1, 1, 0, 0, 1 // v6-v5-v4
-};
-
-Vertex Cube::indexedVertices[] = {
-1, 1, 1, -1, 1, 1, // v0, v1
--1, -1, 1, 1, -1, 1, // v2, v3
-1, -1, -1, 1, 1, -1, // v4, v5
--1, 1, -1, -1, -1, -1 // v6, v7
-};
-
-Colour Cube::indexedColours[] = {
-1, 1, 1, 1, 1, 0, // v0, v1
-1, 0, 0, 1, 0, 1, // v2, v3
-0, 0, 1, 0, 1, 1, // v4, v5
-0, 1, 0, 0, 0, 0 // v6, v7
-};
-
-GLushort Cube::indices[] = {
-0, 1, 2, 2, 3, 0, // front
-0, 3, 4, 4, 5, 0, // right
-0, 5, 6, 6, 1, 0, // top
-1, 6, 7, 7, 2, 1, // left
-7, 4, 3, 3, 2, 7, // bottom
-4, 7, 6, 6, 5, 4 // back
-};
+Colour* Cube::indexedColours = nullptr;
+Vertex* Cube::indexedVertices = nullptr;
+GLushort* Cube::indices = nullptr;
 
 Cube::Cube(float x, float y, float z) {
 	cubeRotation = 0.0f;
@@ -68,6 +16,46 @@ Cube::Cube(float x, float y, float z) {
 }
 
 Cube::~Cube() {
+}
+
+bool Cube::Load(char* path)
+{
+	using namespace std;
+	ifstream inputFile;
+	inputFile.open(path);
+	if (!inputFile.good())
+	{
+		cerr << "Can't open texture file " << path << endl;
+		return false;
+	}
+
+	inputFile >> numVertices;
+	indexedVertices = new Vertex[numVertices];
+	for (int iteration = 0; iteration < numVertices; iteration++)
+	{
+		inputFile >> indexedVertices[iteration].x;
+		inputFile >> indexedVertices[iteration].y;
+		inputFile >> indexedVertices[iteration].z;
+	}
+
+	inputFile >> numColours;
+	indexedColours = new Colour[numColours];
+	for (int iteration = 0; iteration < numColours; iteration++)
+	{
+		inputFile >> indexedColours[iteration].r;
+		inputFile >> indexedColours[iteration].g;
+		inputFile >> indexedColours[iteration].b;
+	}
+
+	inputFile >> numIndices;
+	indices = new GLushort[numIndices];
+	for (int iteration = 0; iteration < numIndices; iteration++)
+	{
+		inputFile >> indices[iteration];
+	}
+
+	inputFile.close();
+	return true;
 }
 
 void Cube::Draw() {
