@@ -8,13 +8,13 @@ HelloGL::HelloGL(int argc, char* argv[]) {
 	for (int iteration = 0; iteration < 200; iteration++) {
 		cube[iteration] = new Cube(((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
 	}
-	camera->eye.x = 5.0f; camera->eye.y = 5.0f; camera->eye.z = -5.0f;
+	camera->eye.x = 3.0f; camera->eye.y = 0.0f; camera->eye.z = -135.0f;
 	camera->center.x = 0.0f; camera->center.y = 0.0f; camera->center.z = 0.0f;
 	camera->up.x = 0.0f; camera->up.y = 1.0f; camera->up.z = 0.0f;
 	GLUTCallbacks::Init(this); // Initializes the callback function
 	glutInit(&argc, argv); // Initializes the GLUT library
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH); // Sets the display mode (enables double buffering)
-	glutInitWindowSize(1000, 1000); // Sets the window size
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH); // Sets the display mode (enables double buffering and depth testing)
+	glutInitWindowSize(800, 800); // Sets the window size
 	glutInitWindowPosition(100, 100); // Sets the window position
 	glutCreateWindow("Simple OpenGL Program");
 	glutDisplayFunc(GLUTCallbacks::Display);
@@ -23,7 +23,7 @@ HelloGL::HelloGL(int argc, char* argv[]) {
 	glMatrixMode(GL_PROJECTION); // Switches to the projection matrix
 	glLoadIdentity(); // Loads the identity matrix
 	glViewport(0, 0, 1000, 1000); // Sets the viewport to match the window
-	gluPerspective(45, 1, 1, 1000); // Sets the perspective projection
+	gluPerspective(55, 1, 0.1f, 1000); // Sets the perspective projection
 	glMatrixMode(GL_MODELVIEW); // Switches to the modelview matrix
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Sets the clear color to black
 	glEnable(GL_DEPTH_TEST); // Enables depth testing
