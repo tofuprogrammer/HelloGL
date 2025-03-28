@@ -51,7 +51,9 @@ void HelloGL::Display()
 	// DrawCubeArray();
 	// DrawIndexedCube();
 	// DrawCubeArrayAlt();
-	cube->Draw();
+	for (int iterator = 0; iterator < 200; iterator++) {
+		cube[iterator]->Draw();
+	}
 
 	glFlush(); // Flushes the buffer to the GPU
 
@@ -61,7 +63,9 @@ void HelloGL::Display()
 void HelloGL::Update() {
 	glLoadIdentity();
 	gluLookAt(camera->eye.x, camera->eye.y, camera->eye.z, camera->center.x, camera->center.y, camera->center.z, camera->up.x, camera->up.y, camera->up.z);
-	cube->Update();
+	for (int iterator = 0; iterator < 200; iterator++) {
+		cube[iterator]->Update();
+	}
 	if (rotation >= 360) {
 		rotation = 0.0f;
 	}

@@ -50,7 +50,7 @@ public:
 class HelloGL
 {
     Camera* camera;
-    Cube* cube;
+    Cube* cube[200];
     float rotation;
 
 public:
