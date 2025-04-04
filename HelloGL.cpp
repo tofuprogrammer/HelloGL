@@ -1,13 +1,13 @@
-#include "Classes.hpp"
-#include "Cube.hpp"
 #include "HelloGL.hpp"
 
 #define REFRESHRATE 8
 
-HelloGL::HelloGL(int argc, char* argv[]) {
+HelloGL::HelloGL(int argc, char* argv[])
+{
 	rotation = 0.0f;
 	camera = new Camera();
-	for (int iteration = 0; iteration < 200; iteration++) {
+	for (int iteration = 0; iteration < 200; iteration++)
+	{
 		cube[iteration] = new Cube(((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
 	}
 	camera->eye.x = 3.0f; camera->eye.y = 0.0f; camera->eye.z = -123.0f;

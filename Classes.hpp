@@ -1,9 +1,7 @@
 #pragma once
 
-#include <gl/GL.h>
-#include <gl/GLU.h>
-#include <Windows.h>
 #include "GL/freeglut.h"
+#include "GL/gl.h"
 #include "GLUTCallbacks.hpp"
 
 class Vector3 {
