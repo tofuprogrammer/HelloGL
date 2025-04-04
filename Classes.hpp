@@ -1,8 +1,8 @@
 #pragma once
 
-#include <Windows.h>
 #include <gl/GL.h>
 #include <gl/GLU.h>
+#include <Windows.h>
 #include "GL/freeglut.h"
 #include "GLUTCallbacks.hpp"
 

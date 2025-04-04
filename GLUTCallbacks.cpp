@@ -1,5 +1,5 @@
-#include "GLUTCallbacks.hpp"
 #include "Classes.hpp"
+#include "GLUTCallbacks.hpp"
 #include "HelloGL.hpp"
 
 namespace GLUTCallbacks {

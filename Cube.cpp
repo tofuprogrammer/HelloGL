@@ -1,7 +1,8 @@
-#include "Classes.hpp"
-#include "Cube.hpp"
 #include <fstream>
 #include <iostream>
+
+#include "Classes.hpp"
+#include "Cube.hpp"
 
 int Cube::numVertices = 0;
 int Cube::numColours = 0;
