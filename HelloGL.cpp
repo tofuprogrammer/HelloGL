@@ -1,4 +1,6 @@
 #include "Classes.hpp"
+#include "Cube.hpp"
+#include "HelloGL.hpp"
 
 #define REFRESHRATE 8
 
