@@ -17,14 +17,6 @@ public:
     ~HelloGL(void);
 
     void Display();
-    /*
-    void DrawPolygon();
-    void DrawTorus();
-    void DrawCube();
-    void DrawCubeArray();
-    void DrawIndexedCube();
-    void DrawCubeArrayAlt();
-    */
     void Update();
     void Keyboard(unsigned char key, int x, int y);
 };
