@@ -1,25 +1,13 @@
 #pragma once
 
-#include <Windows.h>
-#include <gl/GL.h>
-#include <gl/GLU.h>
-#include "GL/freeglut.h"
-#include "GLUTCallbacks.hpp"
 #include "Classes.hpp"
-
-#define REFRESHRATE 8
+#include "Cube.hpp"
 
 class HelloGL
 {
     Camera* camera;
+    Cube* cube[200];
     float rotation;
-    static Vertex vertices[];
-	static Vertex indexedVertices[];
-
-    static Colour colours[];
-	static Colour indexedColours[];
-
-	static GLushort indices[];
 
 public:
     //Constructor definition
@@ -29,13 +17,14 @@ public:
     ~HelloGL(void);
 
     void Display();
+    /*
     void DrawPolygon();
     void DrawTorus();
     void DrawCube();
     void DrawCubeArray();
-	void DrawIndexedCube();
+    void DrawIndexedCube();
     void DrawCubeArrayAlt();
-	void DrawIndexedCubeAlt();
+    */
     void Update();
     void Keyboard(unsigned char key, int x, int y);
 };

@@ -183,7 +183,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Classes.hpp" />
+    <ClInclude Include="Cube.hpp" />
     <ClInclude Include="GLUTCallbacks.hpp" />
+    <ClInclude Include="HelloGL.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cube.cpp" />

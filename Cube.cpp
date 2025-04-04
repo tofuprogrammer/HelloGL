@@ -1,4 +1,5 @@
 #include "Classes.hpp"
+#include "Cube.hpp"
 #include <fstream>
 #include <iostream>
 
