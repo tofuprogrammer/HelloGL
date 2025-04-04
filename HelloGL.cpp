@@ -23,7 +23,7 @@ HelloGL::HelloGL(int argc, char* argv[]) {
 	glMatrixMode(GL_PROJECTION); // Switches to the projection matrix
 	glLoadIdentity(); // Loads the identity matrix
 	glViewport(0, 0, 1000, 1000); // Sets the viewport to match the window
-	gluPerspective(55, 1.333333333333f, 0.1f, 1000); // Sets the perspective projection
+	gluPerspective(55, 4.0/3.0f, 0.1f, 1000); // Sets the perspective projection
 	glMatrixMode(GL_MODELVIEW); // Switches to the modelview matrix
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Sets the clear color to black
 	glEnable(GL_DEPTH_TEST); // Enables depth testing
