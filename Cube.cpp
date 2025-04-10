@@ -63,8 +63,8 @@ bool Cube::Load(char* path)
 void Cube::Draw() {
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
-	glVertexPointer(3, GL_FLOAT, 0, indexedVertices);
-	glColorPointer(3, GL_FLOAT, 0, indexedColours);
+	glVertexPointer(3, GL_FLOAT, 0, _mesh->vertices);
+	glColorPointer(3, GL_FLOAT, 0, _mesh->colours);
 
 	glPushMatrix();
 	glTranslatef(position.x, position.y, position.z);

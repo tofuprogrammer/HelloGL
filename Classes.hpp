@@ -1,8 +1,8 @@
 #pragma once
 
-#include "GL/freeglut.h"
 #include "GL/gl.h"
-#include "GLUTCallbacks.hpp"
+
+class Vertex;
 
 class Vector3 {
 public:
@@ -19,6 +19,16 @@ public:
 class Colour {
 public:
     GLfloat r, g, b;
+};
+
+class Mesh
+{
+    public:
+    Vertex* vertices;
+    Colour* colours;
+    GLushort* indices;
+
+    int vertexCount, colourCount, indexCount;
 };
 
 class Vertex {

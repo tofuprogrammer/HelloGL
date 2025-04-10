@@ -1,3 +1,5 @@
+#include "gl/freeglut.h"
+#include "GLUTCallbacks.hpp"
 #include "HelloGL.hpp"
 
 #define REFRESHRATE 8

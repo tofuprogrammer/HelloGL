@@ -7,15 +7,10 @@ class Cube
 private:
 	Vector3 position;
 	GLfloat cubeRotation;
-	static int numVertices, numColours, numIndices;
-	static Vertex vertices[];
-	static Colour colours[];
-	static Vertex* indexedVertices;
-	static Colour* indexedColours;
-	static GLushort* indices;
+	Mesh* _mesh;
 
 public:
-	Cube(float x, float y, float z);
+	Cube(Mesh* mesh, float x, float y, float z);
 	~Cube();
 
 	void Draw();
