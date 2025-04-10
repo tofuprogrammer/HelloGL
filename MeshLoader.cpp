@@ -3,10 +3,9 @@
 #include <iostream>
 #include <fstream>
 
-using namespace std;
-
 namespace MeshLoader
 {
+	using namespace std;
 	void LoadColours(ifstream& inFile, Mesh& mesh)
 	{
 		inFile >> mesh.colourCount;
