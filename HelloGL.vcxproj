@@ -186,11 +186,13 @@
     <ClInclude Include="Cube.hpp" />
     <ClInclude Include="GLUTCallbacks.hpp" />
     <ClInclude Include="HelloGL.hpp" />
+    <ClInclude Include="MeshLoader.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="GLUTCallbacks.cpp" />
     <ClCompile Include="HelloGL.cpp" />
+    <ClCompile Include="MeshLoader.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

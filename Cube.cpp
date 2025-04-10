@@ -12,7 +12,8 @@ Colour* Cube::indexedColours = nullptr;
 Vertex* Cube::indexedVertices = nullptr;
 GLushort* Cube::indices = nullptr;
 
-Cube::Cube(float x, float y, float z) {
+Cube::Cube(float x, float y, float z)
+{
 	cubeRotation = 0.0f;
 	position.x = x, position.y = y, position.z = z;
 }
