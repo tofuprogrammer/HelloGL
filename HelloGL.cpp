@@ -1,6 +1,7 @@
 #include "gl/freeglut.h"
 #include "GLUTCallbacks.hpp"
 #include "HelloGL.hpp"
+#include "MeshLoader.hpp"
 
 #define REFRESHRATE 8
 
@@ -32,7 +33,8 @@ void HelloGL::Display()
 	glutSwapBuffers(); // Swaps the buffers
 }
 
-void HelloGL::Update() {
+void HelloGL::Update()
+{
 	glLoadIdentity();
 	gluLookAt(camera->eye.x, camera->eye.y, camera->eye.z, camera->center.x, camera->center.y, camera->center.z, camera->up.x, camera->up.y, camera->up.z);
 	for (int iterator = 0; iterator < 200; iterator++) {
@@ -44,7 +46,8 @@ void HelloGL::Update() {
 	glutPostRedisplay();
 }
 
-void HelloGL::Keyboard(unsigned char key, int x, int y) {
+void HelloGL::Keyboard(unsigned char key, int x, int y)
+{
 	if (key == 'd')
 		rotation += 2.0f;
 	if (key == 'a')
@@ -90,12 +93,12 @@ void HelloGL::InitObjects()
 {
 	rotation = 0.0f;
 	camera = new Camera();
+	Mesh* cubeMesh = MeshLoader::Load("cube.txt");
 	for (int iteration = 0; iteration < 200; iteration++)
 	{
-		cube[iteration] = new Cube(((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
+		cube[iteration] = new Cube(cubeMesh, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
 	}
 	camera->eye.x = 3.0f; camera->eye.y = 0.0f; camera->eye.z = -123.0f;
 	camera->center.x = 0.0f; camera->center.y = 0.0f; camera->center.z = 0.0f;
 	camera->up.x = 0.0f; camera->up.y = 1.0f; camera->up.z = 0.0f;
-	Cube::Load((char*) "cube.txt");
 }

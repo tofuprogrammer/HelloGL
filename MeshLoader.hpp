@@ -4,7 +4,7 @@
 
 namespace MeshLoader
 {
-	Mesh* Load(char* path);
+	Mesh* Load(const char* path);
 
 	void LoadVertices(const char* inFile, Mesh& mesh);
 	void LoadColours(const char* inFile, Mesh& mesh);
