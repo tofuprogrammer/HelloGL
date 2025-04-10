@@ -10,4 +10,3 @@ namespace MeshLoader
 	void LoadColours(const char* inFile, Mesh& mesh);
 	void LoadIndices(const char* inFile, Mesh& mesh);
 };
-

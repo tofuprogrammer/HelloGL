@@ -2,21 +2,28 @@
 
 #include "GL/gl.h"
 
+class Vector3;
+class Camera;
+class Colour;
+class Mesh;
 class Vertex;
 
-class Vector3 {
+class Vector3
+{
 public:
     float x, y, z;
 };
 
-class Camera {
+class Camera
+{
 public:
     Vector3 eye;
     Vector3 center;
     Vector3 up;
 };
 
-class Colour {
+class Colour
+{
 public:
     GLfloat r, g, b;
 };
@@ -31,7 +38,8 @@ class Mesh
     int vertexCount, colourCount, indexCount;
 };
 
-class Vertex {
+class Vertex
+{
 public:
     GLfloat x, y, z;
 };

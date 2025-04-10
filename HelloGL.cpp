@@ -12,11 +12,13 @@ HelloGL::HelloGL(int argc, char* argv[])
 	glutMainLoop(); // Enters the GLUT main loop
 }
 
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv[])
+{
 	HelloGL* game = new HelloGL(argc, argv); // Creates a new instance of the game
 }
 
-HelloGL::~HelloGL(void) {
+HelloGL::~HelloGL(void)
+{
 	delete camera;
 }
 
@@ -24,7 +26,8 @@ void HelloGL::Display()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clears the color buffer
 
-	for (int iterator = 0; iterator < 200; iterator++) {
+	for (int iterator = 0; iterator < 200; iterator++)
+	{
 		cube[iterator]->Draw();
 	}
 
@@ -37,10 +40,12 @@ void HelloGL::Update()
 {
 	glLoadIdentity();
 	gluLookAt(camera->eye.x, camera->eye.y, camera->eye.z, camera->center.x, camera->center.y, camera->center.z, camera->up.x, camera->up.y, camera->up.z);
-	for (int iterator = 0; iterator < 200; iterator++) {
+	for (int iterator = 0; iterator < 200; iterator++)
+	{
 		cube[iterator]->Update();
 	}
-	if (rotation >= 360) {
+	if (rotation >= 360)
+	{
 		rotation = 0.0f;
 	}
 	glutPostRedisplay();

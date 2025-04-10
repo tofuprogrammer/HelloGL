@@ -7,23 +7,6 @@ using namespace std;
 
 namespace MeshLoader
 {
-	void LoadVertices(ifstream& inFile, Mesh& mesh)
-	{
-		inFile >> mesh.vertexCount;
-
-		if (mesh.vertexCount > 0)
-		{
-			mesh.vertices = new Vertex[mesh.vertexCount];
-
-			for (int i = 0; i < mesh.vertexCount; i++)
-			{
-				inFile >> mesh.vertices[i].x;
-				inFile >> mesh.vertices[i].y;
-				inFile >> mesh.vertices[i].z;
-			}
-		}
-	}
-
 	void LoadColours(ifstream& inFile, Mesh& mesh)
 	{
 		inFile >> mesh.colourCount;
@@ -52,6 +35,22 @@ namespace MeshLoader
 			for (int i = 0; i < mesh.indexCount; i++)
 			{
 				inFile >> mesh.indices[i];
+			}
+		}
+	}
+	void LoadVertices(ifstream& inFile, Mesh& mesh)
+	{
+		inFile >> mesh.vertexCount;
+
+		if (mesh.vertexCount > 0)
+		{
+			mesh.vertices = new Vertex[mesh.vertexCount];
+
+			for (int i = 0; i < mesh.vertexCount; i++)
+			{
+				inFile >> mesh.vertices[i].x;
+				inFile >> mesh.vertices[i].y;
+				inFile >> mesh.vertices[i].z;
 			}
 		}
 	}
