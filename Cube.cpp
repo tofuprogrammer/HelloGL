@@ -1,6 +1,3 @@
-#include <fstream>
-#include <iostream>
-
 #include "Classes.hpp"
 #include "Cube.hpp"
 
@@ -25,7 +22,7 @@ void Cube::Draw() {
 	glPushMatrix();
 	glTranslatef(position.x, position.y, position.z);
 	glRotatef(cubeRotation, -1.0f, -1.0f, -1.0f);
-	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_SHORT, indices);
+	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_SHORT, _mesh->indices);
 	glPopMatrix();
 
 	glDisableClientState(GL_VERTEX_ARRAY);

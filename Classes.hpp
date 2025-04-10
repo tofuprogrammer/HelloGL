@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GL/gl.h"
+#include "gl/freeglut.h"
 
 class Vector3;
 class Camera;
