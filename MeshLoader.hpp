@@ -1,12 +1,14 @@
 #pragma once
 
+#include <fstream>
+
 #include "Classes.hpp"
 
 namespace MeshLoader
 {
 	Mesh* Load(const char* path);
 
-	void LoadVertices(const char* inFile, Mesh& mesh);
-	void LoadColours(const char* inFile, Mesh& mesh);
-	void LoadIndices(const char* inFile, Mesh& mesh);
+	void LoadVertices(std::ifstream& inFile, Mesh& mesh);
+	void LoadColours(std::ifstream& inFile, Mesh& mesh);
+	void LoadIndices(std::ifstream& inFile, Mesh& mesh);
 };

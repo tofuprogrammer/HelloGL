@@ -66,9 +66,9 @@ namespace MeshLoader
 			return nullptr;
 		}
 
-		LoadVertices("cube.txt", *mesh);
-		LoadColours("cube.txt", *mesh);
-		LoadIndices("cube.txt", *mesh);
+		LoadVertices(inFile, *mesh);
+		LoadColours(inFile, *mesh);
+		LoadIndices(inFile, *mesh);
 
 		return mesh;
 	}
