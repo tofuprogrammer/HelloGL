@@ -35,7 +35,7 @@ class Mesh
     Colour* colours;
     GLushort* indices;
 
-    int vertexCount, colourCount, indexCount;
+    int vertex_count, colour_count, index_count;
 };
 
 class Vertex

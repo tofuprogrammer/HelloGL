@@ -5,15 +5,14 @@
 class Cube
 {
 private:
-	Vector3 position;
-	GLfloat cubeRotation;
-	Mesh* _mesh;
+	Vector3 m_position;
+	GLfloat m_cube_rotation;
+	Mesh* m_mesh;
 
 public:
 	Cube(Mesh* mesh, float x, float y, float z);
-	~Cube();
+	~Cube() = default;
 
-	void Draw();
-	void Update();
+	void draw();
+	void update();
 };
-
