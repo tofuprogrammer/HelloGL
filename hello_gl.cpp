@@ -1,11 +1,11 @@
 #include "gl/freeglut.h"
 #include "glut_callbacks.hpp"
-#include "Hello_gl.hpp"
+#include "hello_gl.hpp"
 #include "mesh_loader.hpp"
 
 #define REFRESHRATE 8
 
-Hello_gl::Hello_gl(int argc, char* argv[])
+hello_gl::hello_gl(int argc, char* argv[])
 {
 	init_gl(argc, argv);
 	init_objects();
@@ -14,15 +14,15 @@ Hello_gl::Hello_gl(int argc, char* argv[])
 
 int main(int argc, char* argv[])
 {
-	Hello_gl* game = new Hello_gl(argc, argv); // Creates a new instance of the game
+	hello_gl* game = new hello_gl(argc, argv); // Creates a new instance of the game
 }
 
-Hello_gl::~Hello_gl()
+hello_gl::~hello_gl()
 {
 	delete m_camera;
 }
 
-void Hello_gl::display()
+void hello_gl::display()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clears the color buffer
 
@@ -36,7 +36,7 @@ void Hello_gl::display()
 	glutSwapBuffers(); // Swaps the buffers
 }
 
-void Hello_gl::update()
+void hello_gl::update()
 {
 	glLoadIdentity();
 	gluLookAt(m_camera->eye.x, m_camera->eye.y, m_camera->eye.z, m_camera->center.x, m_camera->center.y, m_camera->center.z, m_camera->up.x, m_camera->up.y, m_camera->up.z);
@@ -51,7 +51,7 @@ void Hello_gl::update()
 	glutPostRedisplay();
 }
 
-void Hello_gl::keyboard(unsigned char key, int x, int y)
+void hello_gl::keyboard(unsigned char key, int x, int y)
 {
 	if (key == 'd')
 		m_rotation += 2.0f;
@@ -71,7 +71,7 @@ void Hello_gl::keyboard(unsigned char key, int x, int y)
 		m_camera->eye.z -= 2.0f;
 }
 
-void Hello_gl::init_gl(int argc, char* argv[])
+void hello_gl::init_gl(int argc, char* argv[])
 {
 	glut_callbacks::init(this); // Initializes the callback function
 	glutInit(&argc, argv); // Initializes the GLUT library
@@ -94,14 +94,14 @@ void Hello_gl::init_gl(int argc, char* argv[])
 	glCullFace(GL_BACK); // Culls the backface
 }
 
-void Hello_gl::init_objects()
+void hello_gl::init_objects()
 {
 	m_rotation = 0.0f;
-	m_camera = new Camera();
-	Mesh* cube_mesh = mesh_loader::load("cube.txt");
+	m_camera = new camera();
+	mesh* cube_mesh = mesh_loader::load("cube.txt");
 	for (int iteration = 0; iteration < 200; iteration++)
 	{
-		m_cube[iteration] = new Cube(cube_mesh, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
+		m_cube[iteration] = new cube(cube_mesh, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
 	}
 	m_camera->eye.x = 3.0f; m_camera->eye.y = 0.0f; m_camera->eye.z = -123.0f;
 	m_camera->center.x = 0.0f; m_camera->center.y = 0.0f; m_camera->center.z = 0.0f;

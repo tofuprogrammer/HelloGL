@@ -1,14 +1,14 @@
-#include "Classes.hpp"
-#include "Cube.hpp"
+#include "classes.hpp"
+#include "cube.hpp"
 
-Cube::Cube(Mesh* mesh, float x, float y, float z)
+cube::cube(mesh* mesh, float x, float y, float z)
 {
 	m_mesh = mesh;
 	m_cube_rotation = 0.0f;
 	m_position.x = x, m_position.y = y, m_position.z = z;
 }
 
-void Cube::draw() {
+void cube::draw() {
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
 	glVertexPointer(3, GL_FLOAT, 0, m_mesh->vertices);
@@ -24,6 +24,6 @@ void Cube::draw() {
 	glDisableClientState(GL_COLOR_ARRAY);
 }
 
-void Cube::update() {
+void cube::update() {
 	m_cube_rotation += 0.5f;
 }

@@ -2,43 +2,43 @@
 
 #include "gl/freeglut.h"
 
-class Vector3;
-class Camera;
-class Colour;
-class Mesh;
-class Vertex;
+class vector3;
+class camera;
+class colour;
+class mesh;
+class vertex;
 
-class Vector3
+class vector3
 {
 public:
     float x, y, z;
 };
 
-class Camera
+class camera
 {
 public:
-    Vector3 eye;
-    Vector3 center;
-    Vector3 up;
+    vector3 eye;
+    vector3 center;
+    vector3 up;
 };
 
-class Colour
+class colour
 {
 public:
     GLfloat r, g, b;
 };
 
-class Mesh
+class mesh
 {
     public:
-    Vertex* vertices;
-    Colour* colours;
+    vertex* vertices;
+    colour* colours;
     GLushort* indices;
 
     int vertex_count, colour_count, index_count;
 };
 
-class Vertex
+class vertex
 {
 public:
     GLfloat x, y, z;

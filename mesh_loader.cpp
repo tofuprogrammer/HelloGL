@@ -6,13 +6,13 @@
 namespace mesh_loader
 {
 	using namespace std;
-	void load_colours(ifstream& input_file, Mesh& mesh)
+	void load_colours(ifstream& input_file, mesh& mesh)
 	{
 		input_file >> mesh.colour_count;
 
 		if (mesh.colour_count > 0)
 		{
-			mesh.colours = new Colour[mesh.colour_count];
+			mesh.colours = new colour[mesh.colour_count];
 
 			for (int iteration = 0; iteration < mesh.colour_count; iteration++)
 			{
@@ -23,7 +23,7 @@ namespace mesh_loader
 		}
 	}
 
-	void load_indices(ifstream& input_file, Mesh& mesh)
+	void load_indices(ifstream& input_file, mesh& mesh)
 	{
 		input_file >> mesh.index_count;
 
@@ -37,13 +37,13 @@ namespace mesh_loader
 			}
 		}
 	}
-	void load_vertices(ifstream& input_file, Mesh& mesh)
+	void load_vertices(ifstream& input_file, mesh& mesh)
 	{
 		input_file >> mesh.vertex_count;
 
 		if (mesh.vertex_count > 0)
 		{
-			mesh.vertices = new Vertex[mesh.vertex_count];
+			mesh.vertices = new vertex[mesh.vertex_count];
 
 			for (int i = 0; i < mesh.vertex_count; i++)
 			{
@@ -54,9 +54,9 @@ namespace mesh_loader
 		}
 	}
 
-	Mesh* mesh_loader::load(const char* path)
+	mesh* load(const char* path)
 	{
-		Mesh* mesh = new Mesh();
+		mesh* loaded_mesh = new mesh();
 
 		ifstream input_file;
 		input_file.open(path);
@@ -66,10 +66,10 @@ namespace mesh_loader
 			return nullptr;
 		}
 
-		load_vertices(input_file, *mesh);
-		load_colours(input_file, *mesh);
-		load_indices(input_file, *mesh);
+		load_vertices(input_file, *loaded_mesh);
+		load_colours(input_file, *loaded_mesh);
+		load_indices(input_file, *loaded_mesh);
 
-		return mesh;
+		return loaded_mesh;
 	}
 }

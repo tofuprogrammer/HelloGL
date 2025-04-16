@@ -1,20 +1,20 @@
 #pragma once
 
-#include "Classes.hpp"
+#include "classes.hpp"
 #include "Cube.hpp"
 
-class Hello_gl
+class hello_gl
 {
-    Camera* m_camera;
-    Cube* m_cube[200];
+    camera* m_camera;
+    cube* m_cube[200];
     float m_rotation;
 
 public:
     //Constructor definition
-    Hello_gl(int argc, char* argv[]);
+    hello_gl(int argc, char* argv[]);
 
     // Destructor definition
-    ~Hello_gl(void);
+    ~hello_gl(void);
 
     void display();
     void init_objects();

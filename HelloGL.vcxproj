@@ -182,16 +182,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Classes.hpp" />
-    <ClInclude Include="Cube.hpp" />
+    <ClInclude Include="classes.hpp" />
+    <ClInclude Include="cube.hpp" />
     <ClInclude Include="glut_callbacks.hpp" />
-    <ClInclude Include="Hello_gl.hpp" />
+    <ClInclude Include="hello_gl.hpp" />
     <ClInclude Include="mesh_loader.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Cube.cpp" />
+    <ClCompile Include="cube.cpp" />
     <ClCompile Include="glut_callbacks.cpp" />
-    <ClCompile Include="Hello_gl.cpp" />
+    <ClCompile Include="hello_gl.cpp" />
     <ClCompile Include="mesh_loader.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
