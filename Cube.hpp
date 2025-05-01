@@ -1,19 +1,18 @@
 #pragma once
 
-#include "Classes.hpp"
+#include "classes.hpp"
 
-class Cube
+class cube
 {
 private:
-	Vector3 position;
-	GLfloat cubeRotation;
-	Mesh* _mesh;
+	vector3 m_position;
+	GLfloat m_cube_rotation;
+	mesh* m_mesh;
 
 public:
-	Cube(Mesh* mesh, float x, float y, float z);
-	~Cube();
+	cube(mesh* mesh, float x, float y, float z);
+	~cube();
 
-	void Draw();
-	void Update();
+	void draw();
+	void update();
 };
-
