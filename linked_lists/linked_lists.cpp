@@ -31,6 +31,25 @@ list_node* linked_lists::add_node(list_node** head, int data)
     return new_node;
 }
 
+void linked_lists::insert_after(list_node* last_node, int data)
+{
+    list_node* new_node = new list_node();
+    new_node->data = data;
+    new_node->next_node = last_node->next_node;
+    last_node->next_node = new_node;
+}
+
+
+list_node* linked_lists::insert_first(list_node** head, int data)
+{
+    list_node* new_node = new list_node();
+    new_node->data = data;
+    new_node->next_node = *head;
+    *head = new_node;
+
+    return new_node;
+}
+
 void linked_lists::print_list(list_node* node)
 {
     while (node != nullptr)
