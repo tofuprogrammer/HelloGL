@@ -35,7 +35,7 @@ void linked_lists::print_list(list_node* node)
 {
     while (node != nullptr)
     {
-        std::cout << std::setw(5) << "| " << node->data << " |-->";
+        std::cout << "| " << node->data << " |-->";
         node = node->next_node;
     }
 
