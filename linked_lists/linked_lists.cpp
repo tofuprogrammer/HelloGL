@@ -72,7 +72,7 @@ list_node* linked_lists::get_node(list_node* node, int position)
         node = node->next_node;
     }
 
-    std::cout << "Position " << position << "is invalid\n";
+    std::cout << "Position " << position << " is invalid\n";
     return nullptr;
 }
 
