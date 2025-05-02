@@ -31,6 +31,20 @@ list_node* linked_lists::add_node(list_node** head, int data)
     return new_node;
 }
 
+void linked_lists::delete_list(list_node** node)
+{
+    list_node* temporary_pointer = *node;
+    list_node* next_node;
+
+    while (temporary_pointer != nullptr)
+    {
+        next_node = temporary_pointer->next_node;
+        delete temporary_pointer;
+        temporary_pointer = next_node;
+    }
+    *node = nullptr;
+}
+
 void linked_lists::insert_after(list_node* last_node, int data)
 {
     list_node* new_node = new list_node();
