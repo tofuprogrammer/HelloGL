@@ -11,7 +11,7 @@ int main()
     lists->add_node(&head, 2);
     lists->add_node(&head, 3);
     lists->print_list(head);
-    lists->delete_list(&head);
-    std::cout << "List deleted\n";
+    lists->delete_after(head->next_node);
+    std::cout << "Final node deleted\n";
     lists->print_list(head);
 }
