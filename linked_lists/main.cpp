@@ -1,4 +1,6 @@
-﻿#include "classes.hpp"
+﻿#include <iostream>
+
+#include "classes.hpp"
 
 int main()
 {
@@ -8,5 +10,8 @@ int main()
     lists->add_node(&head, 1);
     lists->add_node(&head, 2);
     lists->add_node(&head, 3);
+    lists->print_list(head);
+    lists->delete_list(&head);
+    std::cout << "List deleted\n";
     lists->print_list(head);
 }
