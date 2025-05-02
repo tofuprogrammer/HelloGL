@@ -32,12 +32,14 @@ int main()
     lists->print_list(head);
     // Outputs the list.
     lists->find_node_by_data(head, 4);
+    // Finds the node with data 4 and outputs its position.
     lists->delete_after(head->next_node);
     // Deletes the node after the second node.
     std::cout << "Third node deleted\n";
     lists->print_list(head);
     // Outputs the list.
     lists->find_node_by_data(head, 7);
+    // Finds the node with data 7 and outputs its position.
     lists->delete_list(&head);
     // Deletes the entire list.
     std::cout << "List deleted\n";
