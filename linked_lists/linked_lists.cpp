@@ -64,13 +64,22 @@ void linked_lists::delete_list(list_node** node)
     *node = nullptr;
 }
 
-list_node* linked_lists::find_node(list_node* node, int value)
+list_node* linked_lists::find_node_by_data(list_node* node, int data)
 {
-
+    while (node != nullptr)
+    {
+        if (node->data == data)
+        {
+            return node;
+        }
+        node = node->next_node;
+    }
+    std::cout << "Data " << data << " not found\n";
+    return nullptr;
 }
 
 
-list_node* linked_lists::get_node(list_node* node, int position)
+list_node* linked_lists::find_node_by_position(list_node* node, int position)
 {
     int counter = 0;
 

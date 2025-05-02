@@ -21,13 +21,13 @@ int main()
     // Outputs the list.
     lists->insert_after(head->next_node, 5);
     // Inserts a node after the second node with data set to 5.
-    lists->get_node(head, 1);
+    lists->find_node_by_position(head, 1);
     // Gets the node at position 1 and outputs its data.
     lists->insert_first(&head, 0);
     // Inserts a node at the beginning of the list with data set to 0.
     lists->print_list(head);
     // Outputs the list.
-    lists->get_node(head, 6);
+    lists->find_node_by_position(head, 6);
     // Gets the node at position 6 and outputs its data.
     lists->print_list(head);
     // Outputs the list.
