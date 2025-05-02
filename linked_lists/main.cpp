@@ -22,20 +22,22 @@ int main()
     lists->insert_after(head->next_node, 5);
     // Inserts a node after the second node with data set to 5.
     lists->find_node_by_position(head, 1);
-    // Gets the node at position 1 and outputs its data.
+    // Finds the node at position 1 and outputs its data.
     lists->insert_first(&head, 0);
     // Inserts a node at the beginning of the list with data set to 0.
     lists->print_list(head);
     // Outputs the list.
     lists->find_node_by_position(head, 6);
-    // Gets the node at position 6 and outputs its data.
+    // Finds the node at position 6 and outputs its data.
     lists->print_list(head);
     // Outputs the list.
+    lists->find_node_by_data(head, 4);
     lists->delete_after(head->next_node);
     // Deletes the node after the second node.
     std::cout << "Third node deleted\n";
     lists->print_list(head);
     // Outputs the list.
+    lists->find_node_by_data(head, 7);
     lists->delete_list(&head);
     // Deletes the entire list.
     std::cout << "List deleted\n";
