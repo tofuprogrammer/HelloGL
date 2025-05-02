@@ -6,7 +6,14 @@
 linked_lists::linked_lists()
 = default;
 
-
+/**
+ * Adds a new node to the end of a linked list.
+ *
+ * @param head A pointer to the pointer of the list's head node.
+ *             If the list is empty, the new node will become the head.
+ * @param data An integer value to be assigned to the new node's data field.
+ * @return A pointer to the newly added node.
+ */
 list_node* linked_lists::add_node(list_node** head, int data)
 {
     list_node* new_node = new list_node();
@@ -56,6 +63,12 @@ void linked_lists::delete_list(list_node** node)
 
     *node = nullptr;
 }
+
+list_node* linked_lists::find_node(list_node* node, int value)
+{
+
+}
+
 
 list_node* linked_lists::get_node(list_node* node, int position)
 {
