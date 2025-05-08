@@ -209,3 +209,17 @@ void linked_lists::print_list(list_node* node)
         std::cout << "| NULL |\n";
     }
 }
+
+/**
+ * Outputs the list in reverse order.
+ *
+ * @param node A pointer to a given node.
+ */
+void linked_lists::print_list_reversed(list_node* node)
+{
+    if (node != nullptr)
+    {
+        print_list_reversed(node->next_node);
+        std::cout << "| " << node->data << " |-->";
+    }
+}

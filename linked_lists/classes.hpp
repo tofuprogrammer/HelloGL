@@ -19,4 +19,5 @@ public:
     void insert_after(list_node* node, int data);
     list_node* insert_first(list_node** head, int data);
     void print_list(list_node* node);
+    void print_list_reversed(list_node* node);
 };
