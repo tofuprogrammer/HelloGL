@@ -198,15 +198,21 @@ list_node* linked_lists::insert_first(list_node** head, int data)
  */
 void linked_lists::print_list(list_node* node)
 {
+    /*
     while (node != nullptr)
     {
         std::cout << "| " << node->data << " |-->";
         node = node->next_node;
     }
-
+    */
     if (node == nullptr)
     {
         std::cout << "| NULL |\n";
+    }
+    else
+    {
+        std::cout << "| " << node->data << " |-->\n";
+        print_list(node->next_node);
     }
 }
 
