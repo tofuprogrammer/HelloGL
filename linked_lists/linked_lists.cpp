@@ -3,8 +3,7 @@
 
 #include "classes.hpp"
 
-linked_lists::linked_lists()
-= default;
+linked_lists::linked_lists() = default;
 
 /**
  * Adds a new node to the end of a linked list.
@@ -37,18 +36,35 @@ list_node* linked_lists::add_node(list_node** head, int data)
     return new_node;
 }
 
+/**
+ * Deletes the node after a given node.
+ *
+ * @param node A pointer to a given node in the list.
+ *             The node after this will be deleted.
+ */
 void linked_lists::delete_after(list_node* node)
 {
-    list_node* temporary_pointer;
-
     if (node != nullptr && node->next_node != nullptr)
     {
-        temporary_pointer = node->next_node;
+        list_node* temporary_pointer = node->next_node;
         node->next_node = temporary_pointer->next_node;
         delete temporary_pointer;
     }
+    else if (node != nullptr && node->next_node == nullptr)
+    {
+        std::cerr << "The given node is the last node in the list\n";
+    }
+    else if (node == nullptr)
+    {
+        std::cerr << "The given node is invalid\n";
+    }
 }
 
+/**
+ * Steps through the list, deleting every node.
+ *
+ * @param node A pointer to the pointer to the head node.
+ */
 void linked_lists::delete_list(list_node** node)
 {
     list_node* temporary_pointer = *node;
@@ -64,6 +80,39 @@ void linked_lists::delete_list(list_node** node)
     *node = nullptr;
 }
 
+/**
+ * Deletes a node at the specified position in the linked list.
+ *
+ * @param node A pointer to the head node of the list.
+ * @param position The index of the node to be deleted.
+ *                 If the position is invalid, an error message is output.
+ */
+void linked_lists::delete_node_at_position(list_node* node, int position)
+{
+    int counter = 0;
+
+    while (node != nullptr)
+    {
+        if (counter == position)
+        {
+            list_node* temporary_pointer = node;
+            node->next_node = temporary_pointer->next_node;
+            delete temporary_pointer;
+            std::cout << "Node at position " << position << " deleted\n";
+            return;
+        }
+        std::cerr << "Position " << position << " is invalid\n";
+        return;
+    }
+}
+
+/**
+ * Searches for a node with the given data.
+ *
+ * @param node A pointer to the given node in the list.
+ * @param data A given data value to search for in the list.
+ * @return A pointer to the node(s) with the given data.
+ */
 list_node* linked_lists::find_node_by_data(list_node* node, int data)
 {
     int position = 0;
@@ -71,7 +120,8 @@ list_node* linked_lists::find_node_by_data(list_node* node, int data)
     {
         if (node->data == data)
         {
-            std::cout << "Data " << data << " found at position " << position << '\n';
+            std::cout << "Data " << data << " found at position " << position <<
+                '\n';
             return node;
         }
         position++;
@@ -81,7 +131,13 @@ list_node* linked_lists::find_node_by_data(list_node* node, int data)
     return nullptr;
 }
 
-
+/**
+ * Searches the list for a node at a given position.
+ *
+ * @param node A pointer to the given node in the list.
+ * @param position The index of a node to search for.
+ * @return A pointer to the node at the given position.
+ */
 list_node* linked_lists::find_node_by_position(list_node* node, int position)
 {
     int counter = 0;
@@ -90,7 +146,8 @@ list_node* linked_lists::find_node_by_position(list_node* node, int position)
     {
         if (counter == position)
         {
-            std::cout << "Data found at position " << position << " is " << node->data << '\n';
+            std::cout << "Data found at position " << position << " is " << node
+                ->data << '\n';
             return node;
         }
         counter++;
@@ -101,17 +158,28 @@ list_node* linked_lists::find_node_by_position(list_node* node, int position)
     return nullptr;
 }
 
-
-void linked_lists::insert_after(list_node* last_node, int data)
+/**
+ * Inserts a new node after a given node.
+ *
+ * @param node A pointer to a given node in the list.
+ * @param data A given data value to insert.
+ *             The data is inserted at the added node.
+ */
+void linked_lists::insert_after(list_node* node, int data)
 {
     list_node* new_node = new list_node();
-
     new_node->data = data;
-
-    new_node->next_node = last_node->next_node;
-    last_node->next_node = new_node;
+    new_node->next_node = node->next_node;
+    node->next_node = new_node;
 }
 
+/**
+ * Inserts a new node at the head of the list.
+ *
+ * @param head A pointer to the pointer to the head node of the list.
+ * @param data The data to be inserted with the node
+ * @return A pointer to the new node to be created
+ */
 list_node* linked_lists::insert_first(list_node** head, int data)
 {
     list_node* new_node = new list_node();
@@ -123,6 +191,11 @@ list_node* linked_lists::insert_first(list_node** head, int data)
     return new_node;
 }
 
+/**
+ * Outputs the entire list to the console.
+ *
+ * @param node A pointer to a given node.
+ */
 void linked_lists::print_list(list_node* node)
 {
     while (node != nullptr)
