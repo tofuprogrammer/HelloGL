@@ -113,20 +113,18 @@ void linked_lists::delete_node_at_position(list_node* node, int position)
  */
 list_node* linked_lists::find_node_by_data(list_node* node, int data)
 {
-    int position = 0;
-    while (node != nullptr)
+    if (node == nullptr)
     {
-        if (node->data == data)
-        {
-            std::cout << "Data " << data << " found at position " << position <<
-                '\n';
-            return node;
-        }
-        position++;
-        node = node->next_node;
+        std::cout << "Data " << data << " not found in the linked list\n";
+        return nullptr;
     }
-    std::cout << "Data " << data << " not found\n";
-    return nullptr;
+
+    if (node->data == data)
+    {
+        return node;
+    }
+
+    return find_node_by_data(node->next_node, data);
 }
 
 /**
