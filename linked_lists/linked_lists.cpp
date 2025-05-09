@@ -202,7 +202,7 @@ void linked_lists::print_list(list_node* node)
     }
     else
     {
-        std::cout << "| " << node->data << " |-->\n";
+        std::cout << "| " << node->data << " |-->";
         print_list(node->next_node);
     }
 }
