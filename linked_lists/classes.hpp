@@ -6,6 +6,7 @@ class linked_lists
 {
 private:
     list_node* m_head = nullptr;
+
 public:
     linked_lists();
     ~linked_lists();
