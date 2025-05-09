@@ -18,5 +18,19 @@
     <ClCompile Include="linked_lists.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="structs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="classes.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="structs.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

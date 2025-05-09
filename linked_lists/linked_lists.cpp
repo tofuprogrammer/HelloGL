@@ -67,41 +67,65 @@ void linked_lists::delete_after(list_node* node)
  */
 void linked_lists::delete_list(list_node** node)
 {
-    if (node != nullptr && *node != nullptr)
+    if (node == nullptr || *node == nullptr)
+    // Check if node or *node is nullptr
     {
-        list_node* temporary_pointer = *node;
-        list_node* next_node = temporary_pointer->next_node;
-        delete temporary_pointer;
-        *node = next_node;
-        delete_list(node);
+        return; // Exit early if node is invalid
     }
-    *node = nullptr;
+
+    list_node* temporary_pointer = *node;
+    list_node* next_node = temporary_pointer->next_node;
+    delete temporary_pointer;
+    *node = next_node;
+    delete_list(node); // Recursive call
+    *node = nullptr; // Ensure the pointer is set to nullptr after deletion
 }
 
 /**
  * Deletes a node at the specified position in the linked list.
  *
- * @param node A pointer to the head node of the list.
+ * @param head A pointer to the head node of the list.
  * @param position The index of the node to be deleted.
  *                 If the position is invalid, an error message is output.
  */
-void linked_lists::delete_node_at_position(list_node* node, int position)
+void linked_lists::delete_node_at_position(list_node* &head, int position)
 {
-    int counter = 0;
-
-    while (node != nullptr)
+    if (head == nullptr) // Check if the list is empty.
     {
-        if (counter == position)
-        {
-            list_node* temporary_pointer = node;
-            node->next_node = temporary_pointer->next_node;
-            delete temporary_pointer;
-            std::cout << "Node at position " << position << " deleted\n";
-            return;
-        }
-        std::cerr << "Position " << position << " is invalid\n";
+        std::cerr << "List is empty. Cannot delete node at position " << position << ".\n";
         return;
     }
+
+    if (position == 0) // Special case for deleting the head.
+    {
+        list_node* temp = head;
+        head = head->next_node; // Move the head pointer to the next node.
+        delete temp; // Delete the old head.
+        std::cout << "Node at position 0 deleted\n";
+        return;
+    }
+
+    list_node* current = head;
+    list_node* prev = nullptr;
+    int counter = 0;
+
+    while (current != nullptr && counter < position)
+    {
+        prev = current;           // Keep track of the previous node.
+        current = current->next_node; // Move to the next node.
+        counter++;
+    }
+
+    if (current == nullptr) // If position is out of bounds.
+    {
+        std::cerr << "Position " << position << " is invalid. No node deleted.\n";
+        return;
+    }
+
+    // Delete the node at the desired position.
+    prev->next_node = current->next_node; // Update the previous node's next.
+    delete current; // Delete the current node.
+    std::cout << "Node at position " << position << " deleted\n";
 }
 
 /**
