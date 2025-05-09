@@ -67,16 +67,14 @@ void linked_lists::delete_after(list_node* node)
  */
 void linked_lists::delete_list(list_node** node)
 {
-    list_node* temporary_pointer = *node;
-    list_node* next_node;
-
-    while (temporary_pointer != nullptr)
+    if (node != nullptr && *node != nullptr)
     {
-        next_node = temporary_pointer->next_node;
+        list_node* temporary_pointer = *node;
+        list_node* next_node = temporary_pointer->next_node;
         delete temporary_pointer;
-        temporary_pointer = next_node;
+        *node = next_node;
+        delete_list(node);
     }
-
     *node = nullptr;
 }
 
