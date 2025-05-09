@@ -138,22 +138,25 @@ list_node* linked_lists::find_node_by_data(list_node* node, int data)
  */
 list_node* linked_lists::find_node_by_position(list_node* node, int position)
 {
-    int counter = 0;
-
-    while (node != nullptr)
+    if (node == nullptr)
     {
-        if (counter == position)
-        {
-            std::cout << "Data found at position " << position << " is " << node
-                ->data << '\n';
-            return node;
-        }
-        counter++;
-        node = node->next_node;
+        std::cout << "Position " << position << " is invalid\n";
+        return nullptr;
     }
 
-    std::cout << "Position " << position << " is invalid\n";
-    return nullptr;
+    if (position < 0)
+    {
+        std::cout << "Invalid position - position must be positive\n";
+        return nullptr;
+    }
+
+    if (position == 0)
+    {
+        std::cout << "Data found at position 0 is " << node->data << '\n';
+        return node;
+    }
+
+    return find_node_by_position(node->next_node, position - 1);
 }
 
 /**
