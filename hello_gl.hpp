@@ -7,8 +7,7 @@
 class hello_gl
 {
     camera* m_camera;
-    cube* m_cube[500];
-    pyramid* m_pyramid[500];
+    scene_object* objects[1000];
     float m_rotation;
 
 public:

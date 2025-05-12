@@ -1,18 +1,19 @@
 ﻿#pragma once
 
+#include "scene_object.hpp"
 #include "structures.hpp"
 
-class pyramid
+class pyramid : public scene_object
 {
 private:
     vector3 m_pyramid_position;
     GLfloat m_pyramid_rotation;
-    mesh* m_pyramid_mesh;
-
 public:
     pyramid(mesh* mesh, float x, float y, float z);
     ~pyramid();
 
     void pyramid_draw();
+    void object_draw() override;
     void pyramid_update();
+    void object_update() override;
 };

@@ -31,14 +31,9 @@ void hello_gl::display()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clears the color buffer
 
-	for (int iterator = 0; iterator < 500; iterator++)
+	for (int iterator = 0; iterator < 1000; iterator++)
 	{
-		m_cube[iterator]->cube_draw();
-	}
-
-	for (int iterator = 0; iterator < 500; iterator++)
-	{
-		m_pyramid[iterator]->pyramid_draw();
+		objects[iterator]->object_draw();
 	}
 
 	glFlush(); // Flushes the buffer to the GPU
@@ -50,13 +45,9 @@ void hello_gl::update()
 {
 	glLoadIdentity();
 	gluLookAt(m_camera->eye.x, m_camera->eye.y, m_camera->eye.z, m_camera->center.x, m_camera->center.y, m_camera->center.z, m_camera->up.x, m_camera->up.y, m_camera->up.z);
-	for (int iterator = 0; iterator < 500; iterator++)
+	for (int iterator = 0; iterator < 1000; iterator++)
 	{
-		m_cube[iterator]->cube_update();
-	}
-	for (int iterator = 0; iterator < 500; iterator++)
-	{
-		m_pyramid[iterator]->pyramid_update();
+		objects[iterator]->object_update();
 	}
 	if (m_rotation >= 360)
 	{
@@ -117,20 +108,13 @@ void hello_gl::initialise_objects()
 	m_camera->up.x = 0.0f; m_camera->up.y = 1.0f; m_camera->up.z = 0.0f;
 
 	mesh* cube_mesh = mesh_loader::load("cube.txt");
-	for (int iteration = 0; iteration < 500; iteration++)
-	{
-		m_cube[iteration] = new cube(cube_mesh, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
-	}
-
 	mesh* pyramid_mesh = mesh_loader::load("pyramid.txt");
-	if (!pyramid_mesh)
-	{
-		std::cerr << "Failed to load pyramid mesh!" << std::endl;
-		return;
-	}
-
 	for (int iteration = 0; iteration < 500; iteration++)
 	{
-		m_pyramid[iteration] = new pyramid(pyramid_mesh, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
+		objects[iteration] = new cube(cube_mesh, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
+	}
+	for (int iteration = 500; iteration < 1000; iteration++)
+	{
+		objects[iteration] = new pyramid(pyramid_mesh, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
 	}
 }

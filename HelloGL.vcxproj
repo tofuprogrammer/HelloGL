@@ -183,6 +183,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="pyramid.hpp" />
+    <ClInclude Include="scene_object.hpp" />
     <ClInclude Include="structures.hpp" />
     <ClInclude Include="cube.hpp" />
     <ClInclude Include="glut_callbacks.hpp" />
@@ -195,6 +196,7 @@
     <ClCompile Include="hello_gl.cpp" />
     <ClCompile Include="mesh_loader.cpp" />
     <ClCompile Include="pyramid.cpp" />
+    <ClCompile Include="scene_object.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
