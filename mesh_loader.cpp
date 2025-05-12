@@ -5,8 +5,7 @@
 
 namespace mesh_loader
 {
-	using namespace std;
-	void load_colours(ifstream& input_file, mesh& mesh)
+	void load_colours(std::ifstream& input_file, mesh& mesh)
 	{
 		input_file >> mesh.colour_count;
 
@@ -23,7 +22,23 @@ namespace mesh_loader
 		}
 	}
 
-	void load_indices(ifstream& input_file, mesh& mesh)
+	void load_coordinates(std::ifstream& input_file, mesh& mesh)
+	{
+		input_file >> mesh.texture_coordinate_count;
+
+		if (mesh.texture_coordinate_count > 0)
+		{
+			mesh.texture_coordinates = new texture_coordinate[mesh.texture_coordinate_count];
+
+			for (int iteration = 0; iteration < mesh.texture_coordinate_count; iteration++)
+			{
+				input_file >> mesh.texture_coordinates[iteration].u;
+				input_file >> mesh.texture_coordinates[iteration].v;
+			}
+		}
+	}
+
+	void load_indices(std::ifstream& input_file, mesh& mesh)
 	{
 		input_file >> mesh.index_count;
 
@@ -37,7 +52,7 @@ namespace mesh_loader
 			}
 		}
 	}
-	void load_vertices(ifstream& input_file, mesh& mesh)
+	void load_vertices(std::ifstream& input_file, mesh& mesh)
 	{
 		input_file >> mesh.vertex_count;
 
@@ -58,11 +73,11 @@ namespace mesh_loader
 	{
 		mesh* object_mesh = new mesh();
 
-		ifstream inFile;
+		std::ifstream inFile;
 		inFile.open(path);
 		if (!inFile.good())
 		{
-			cerr  << "Can't open texture file " << path << '\n';
+			std::cerr  << "Can't open texture file " << path << '\n';
 			return nullptr;
 		}
 

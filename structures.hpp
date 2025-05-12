@@ -3,6 +3,9 @@
 #include "gl/freeglut.h"
 
 struct vertex;
+struct colour;
+struct mesh;
+struct texture_coordinate;
 
 struct vector3
 {
@@ -26,11 +29,17 @@ struct mesh
     vertex* vertices;
     colour* colours;
     GLushort* indices;
+    texture_coordinate* texture_coordinates;
 
-    int vertex_count, colour_count, index_count;
+    int vertex_count, colour_count, index_count, texture_coordinate_count;
 };
 
 struct vertex
 {
     GLfloat x, y, z;
+};
+
+struct texture_coordinate
+{
+    GLfloat u, v;
 };
