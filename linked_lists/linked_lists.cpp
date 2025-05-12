@@ -245,3 +245,8 @@ void linked_lists::print_list_reversed(list_node* node)
         std::cout << "| " << node->data << " |-->";
     }
 }
+
+linked_lists::~linked_lists()
+{
+    delete_list(&m_head);
+}

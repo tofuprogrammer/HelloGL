@@ -25,4 +25,6 @@ int main()
     lists->delete_node_at_position(head, 0); // Deletes the node at position 2.
 
     lists->print_list(head); // Outputs the list.
+
+    delete lists;
 }
