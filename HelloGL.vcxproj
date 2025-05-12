@@ -189,6 +189,7 @@
     <ClInclude Include="glut_callbacks.hpp" />
     <ClInclude Include="hello_gl.hpp" />
     <ClInclude Include="mesh_loader.hpp" />
+    <ClInclude Include="texture_2d.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cube.cpp" />
@@ -197,6 +198,7 @@
     <ClCompile Include="mesh_loader.cpp" />
     <ClCompile Include="pyramid.cpp" />
     <ClCompile Include="scene_object.cpp" />
+    <ClCompile Include="texture_2d.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
