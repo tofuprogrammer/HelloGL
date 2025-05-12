@@ -22,7 +22,7 @@ int main()
     lists->print_list(head); // Outputs the list.
 
     // Testing `delete_node_at_position` function.
-    lists->delete_node_at_position(head, 0); // Deletes the node at position 2.
+    lists->delete_node_at_position(head, 0); // Deletes the node at position 0.
 
     lists->print_list(head); // Outputs the list.
 }
