@@ -190,6 +190,11 @@ list_node* linked_lists::find_node_by_position(list_node* node, int position)
  */
 void linked_lists::insert_after(list_node* node, int data)
 {
+    if (node == nullptr)
+    {
+        std::cout << "Error: Cannot insert after a null node.\n";
+        return;
+    }
     list_node* new_node = new list_node();
     new_node->data = data;
     new_node->next_node = node->next_node;
