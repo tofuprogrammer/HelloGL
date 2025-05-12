@@ -10,7 +10,7 @@ private:
 	GLfloat m_cube_rotation;
 
 public:
-	cube(mesh* mesh, float x, float y, float z);
+	cube(mesh* mesh, texture_2d* cube_texture, float x, float y, float z);
 	~cube();
 
 	void cube_draw();

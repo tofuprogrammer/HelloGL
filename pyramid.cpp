@@ -3,7 +3,7 @@
 #include "scene_object.hpp"
 #include "structures.hpp"
 
-pyramid::pyramid(mesh* mesh, float x, float y, float z) : scene_object(mesh)
+pyramid::pyramid(mesh* object_mesh, texture_2d* object_texture,float x, float y, float z) : scene_object(object_mesh, object_texture)
 {
     m_pyramid_rotation = 0.0f;
     m_pyramid_position.x = x, m_pyramid_position.y = y, m_pyramid_position.z = z;

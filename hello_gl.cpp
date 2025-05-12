@@ -33,6 +33,11 @@ void hello_gl::display()
 
 	for (int iterator = 0; iterator < 1000; iterator++)
 	{
+		if (objects[iterator] == nullptr)
+		{
+			std::cerr << "Object " << iterator << " is null" << '\n';
+			continue;
+		}
 		objects[iterator]->object_draw();
 	}
 
@@ -94,6 +99,7 @@ void hello_gl::initialise_gl(int argc, char* argv[])
 	gluPerspective(55, 4.0/3.0f, 0.1f, 1000); // Sets the perspective projection
 	glMatrixMode(GL_MODELVIEW); // Switches to the modelview matrix
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Sets the clear color to black
+	glEnable(GL_TEXTURE_2D); // Enables texture mapping
 	glEnable(GL_DEPTH_TEST); // Enables depth testing
 	glEnable(GL_CULL_FACE); // Enables backface culling
 	glCullFace(GL_BACK); // Culls the backface
@@ -109,12 +115,34 @@ void hello_gl::initialise_objects()
 
 	mesh* cube_mesh = mesh_loader::load("cube.txt");
 	mesh* pyramid_mesh = mesh_loader::load("pyramid.txt");
+	texture_2d* cube_texture = new texture_2d();
+	cube_texture->load_texture((char*)"penguins.raw", 512, 512);
+	if (!cube_mesh)
+	{
+		std::cerr << "Failed to load cube mesh" << '\n';
+		return;
+	}
+	texture_2d* pyramid_texture = new texture_2d();
+	pyramid_texture->load_texture((char*)"stars.raw", 512, 512);
+	if (!pyramid_mesh)
+	{
+		std::cerr << "Failed to load pyramid mesh" << '\n';
+		return;
+	}
 	for (int iteration = 0; iteration < 500; iteration++)
 	{
-		objects[iteration] = new cube(cube_mesh, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
+		objects[iteration] = new cube(cube_mesh, cube_texture, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
+		if (objects[iteration] == nullptr)
+		{
+			std::cerr << "Failed to initialise cube at index " << iteration << '\n';
+		}
 	}
 	for (int iteration = 500; iteration < 1000; iteration++)
 	{
-		objects[iteration] = new pyramid(pyramid_mesh, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
+		objects[iteration] = new pyramid(pyramid_mesh, pyramid_texture, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
+		if (objects[iteration] == nullptr)
+		{
+			std::cerr << "Failed to initialise pyramid at index " << iteration << '\n';
+		}
 	}
 }

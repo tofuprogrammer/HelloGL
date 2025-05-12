@@ -9,7 +9,7 @@ private:
     vector3 m_pyramid_position;
     GLfloat m_pyramid_rotation;
 public:
-    pyramid(mesh* mesh, float x, float y, float z);
+    pyramid(mesh* pyramid_mesh, texture_2d* pyramid_texture, float x, float y, float z);
     ~pyramid();
 
     void pyramid_draw();
