@@ -56,20 +56,20 @@ namespace mesh_loader
 
 	mesh* mesh_loader::load(const char* path)
 	{
-		mesh* mesh = new mesh();
+		mesh* object_mesh = new mesh();
 
 		ifstream inFile;
 		inFile.open(path);
 		if (!inFile.good())
 		{
-			cerr  << "Can't open texture file " << path << endl;
+			cerr  << "Can't open texture file " << path << '\n';
 			return nullptr;
 		}
 
-		load_vertices(inFile, *mesh);
-		load_colours(inFile, *mesh);
-		load_indices(inFile, *mesh);
+		load_vertices(inFile, *object_mesh);
+		load_colours(inFile, *object_mesh);
+		load_indices(inFile, *object_mesh);
 
-		return mesh;
+		return object_mesh;
 	}
 }

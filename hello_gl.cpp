@@ -83,7 +83,7 @@ void hello_gl::initialise_gl(int argc, char* argv[])
 	glutInitWindowPosition(100, 100); // Sets the window position
 	glutCreateWindow("Simple OpenGL Program");
 	glutDisplayFunc(glut_callbacks::display);
-	glutTimerFunc(REFRESHRATE, glut_callbacks::timer, REFRESHRATE);
+	glutTimerFunc(static_cast<unsigned int> (refresh_interval::refresh_interval_ms), glut_callbacks::timer, static_cast<unsigned int> (refresh_interval::refresh_interval_ms));
 	glutKeyboardFunc(glut_callbacks::keyboard);
 
 	glMatrixMode(GL_PROJECTION); // Switches to the projection matrix
@@ -100,11 +100,11 @@ void hello_gl::initialise_gl(int argc, char* argv[])
 void hello_gl::initialise_objects()
 {
 	m_rotation = 0.0f;
-	m_camera = new m_camera();
+	m_camera = new camera();
 	mesh* cube_mesh = mesh_loader::load("cube.txt");
 	for (int iteration = 0; iteration < 200; iteration++)
 	{
-		m_cube[iteration] = new m_cube(cube_mesh, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
+		m_cube[iteration] = new cube(cube_mesh, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
 	}
 	m_camera->eye.x = 3.0f; m_camera->eye.y = 0.0f; m_camera->eye.z = -123.0f;
 	m_camera->center.x = 0.0f; m_camera->center.y = 0.0f; m_camera->center.z = 0.0f;
