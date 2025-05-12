@@ -3,6 +3,7 @@
 #include "hello_gl.hpp"
 #include "mesh_loader.hpp"
 #include "pyramid.hpp"
+#include <iostream>
 
 enum class refresh_interval : std::uint8_t
 {
@@ -122,6 +123,12 @@ void hello_gl::initialise_objects()
 	}
 
 	mesh* pyramid_mesh = mesh_loader::load("pyramid.txt");
+	if (!pyramid_mesh)
+	{
+		std::cerr << "Failed to load pyramid mesh!" << std::endl;
+		return;
+	}
+
 	for (int iteration = 0; iteration < 500; iteration++)
 	{
 		m_pyramid[iteration] = new pyramid(pyramid_mesh, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);

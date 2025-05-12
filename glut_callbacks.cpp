@@ -18,9 +18,9 @@ namespace glut_callbacks
 		}
 	}
 
-	void init(hello_gl* p_gl)
+	void init(hello_gl* gl)
 	{
-		hello_gl_instance = p_gl;
+		hello_gl_instance = gl;
 	}
 
 	void keyboard(unsigned char key, int x, int y)
