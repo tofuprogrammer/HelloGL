@@ -2,7 +2,7 @@
 
 #include <fstream>
 
-#include "classes.hpp"
+#include "structures.hpp"
 
 namespace mesh_loader
 {

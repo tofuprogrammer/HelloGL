@@ -1,4 +1,4 @@
-#include "classes.hpp"
+#include "structures.hpp"
 #include "cube.hpp"
 
 cube::cube(mesh* mesh, float x, float y, float z)

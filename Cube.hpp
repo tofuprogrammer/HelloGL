@@ -1,6 +1,6 @@
 #pragma once
 
-#include "classes.hpp"
+#include "structures.hpp"
 
 class cube
 {

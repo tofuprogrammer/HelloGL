@@ -1,6 +1,6 @@
 #pragma once
 
-#include "classes.hpp"
+#include "structures.hpp"
 #include "cube.hpp"
 
 class hello_gl

@@ -1,4 +1,4 @@
-#include "classes.hpp"
+#include "structures.hpp"
 #include "glut_callbacks.hpp"
 #include "GL/freeglut.h"
 #include "hello_gl.hpp"

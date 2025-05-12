@@ -182,7 +182,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="classes.hpp" />
+    <ClInclude Include="structures.hpp" />
     <ClInclude Include="cube.hpp" />
     <ClInclude Include="glut_callbacks.hpp" />
     <ClInclude Include="hello_gl.hpp" />
