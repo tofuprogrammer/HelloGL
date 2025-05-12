@@ -2,11 +2,13 @@
 
 #include "structures.hpp"
 #include "cube.hpp"
+#include "pyramid.hpp"
 
 class hello_gl
 {
     camera* m_camera;
-    cube* m_cube[200];
+    cube* m_cube[500];
+    pyramid* m_pyramid[500];
     float m_rotation;
 
 public:
@@ -14,7 +16,7 @@ public:
     hello_gl(int argc, char* argv[]);
 
     // Destructor definition
-    ~hello_gl(void);
+    ~hello_gl();
 
     void display();
     void initialise_objects();
