@@ -1,9 +1,11 @@
 ﻿#include "pyramid.hpp"
 
+#include <iostream>
+
 #include "scene_object.hpp"
 #include "structures.hpp"
 
-pyramid::pyramid(mesh* object_mesh, texture_2d* object_texture,float x, float y, float z) : scene_object(object_mesh, object_texture)
+pyramid::pyramid(mesh* object_mesh, float x, float y, float z) : scene_object(object_mesh, nullptr)
 {
     m_pyramid_rotation = 0.0f;
     m_pyramid_position.x = x, m_pyramid_position.y = y, m_pyramid_position.z = z;
@@ -24,7 +26,7 @@ void pyramid::pyramid_draw()
     glPushMatrix();
     glTranslatef(m_pyramid_position.x, m_pyramid_position.y, m_pyramid_position.z);
     glRotatef(m_pyramid_rotation, -1.0f, -1.0f, -1.0f);
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, m_object_mesh->indices);
+    glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_SHORT, m_object_mesh->indices);
     glPopMatrix();
 
     glDisableClientState(GL_VERTEX_ARRAY);

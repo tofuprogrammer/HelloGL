@@ -12,6 +12,11 @@ enum class refresh_interval : std::uint8_t
 
 hello_gl::hello_gl(int argc, char* argv[])
 {
+	scene_object* objects[1000] =
+		{
+			nullptr
+		};
+
 	initialise_gl(argc, argv);
 	initialise_objects();
 	glutMainLoop(); // Enters the GLUT main loop
@@ -19,7 +24,9 @@ hello_gl::hello_gl(int argc, char* argv[])
 
 int main(int argc, char* argv[])
 {
-	hello_gl* game = new hello_gl(argc, argv); // Creates a new instance of the game
+	hello_gl* gl = new hello_gl(argc, argv);
+	delete gl;
+	return 0;
 }
 
 hello_gl::~hello_gl(void)
@@ -122,8 +129,6 @@ void hello_gl::initialise_objects()
 		std::cerr << "Failed to load cube mesh" << '\n';
 		return;
 	}
-	texture_2d* pyramid_texture = new texture_2d();
-	pyramid_texture->load_texture((char*)"stars.raw", 512, 512);
 	if (!pyramid_mesh)
 	{
 		std::cerr << "Failed to load pyramid mesh" << '\n';
@@ -139,7 +144,7 @@ void hello_gl::initialise_objects()
 	}
 	for (int iteration = 500; iteration < 1000; iteration++)
 	{
-		objects[iteration] = new pyramid(pyramid_mesh, pyramid_texture, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
+		objects[iteration] = new pyramid(pyramid_mesh, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
 		if (objects[iteration] == nullptr)
 		{
 			std::cerr << "Failed to initialise pyramid at index " << iteration << '\n';

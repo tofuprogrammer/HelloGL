@@ -31,7 +31,7 @@ struct mesh
     GLushort* indices;
     texture_coordinate* texture_coordinates;
 
-    int vertex_count, colour_count, index_count, texture_coordinate_count;
+    int vertex_count, colour_count, texture_coordinate_count, index_count;
 };
 
 struct vertex

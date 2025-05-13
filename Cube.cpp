@@ -1,6 +1,8 @@
 #include "structures.hpp"
 #include "cube.hpp"
 
+#include <iostream>
+
 cube::cube(mesh* object_mesh, texture_2d* object_texture, float x, float y, float z) : scene_object(object_mesh, object_texture)
 {
 	m_cube_rotation = 0.0f;
@@ -14,6 +16,18 @@ cube::~cube()
 
 void cube::cube_draw()
 {
+	if (m_object_mesh == nullptr || m_object_mesh->indices == nullptr)
+	{
+		std::cerr << "Error: Null mesh or indices in cube_draw()\n";
+		return;
+	}
+
+	if (m_object_texture == nullptr)
+	{
+		std::cerr << "Error: Null texture in cube_draw()\n";
+		return;
+	}
+
 	glBindTexture(GL_TEXTURE_2D, m_object_texture->get_texture_id());
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 	glEnableClientState(GL_VERTEX_ARRAY);
