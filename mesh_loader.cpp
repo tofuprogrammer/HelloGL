@@ -22,7 +22,7 @@ namespace mesh_loader
 		}
 	}
 
-	void load_coordinates(std::ifstream& input_file, mesh& mesh)
+	void load_texture_coordinates(std::ifstream& input_file, mesh& mesh)
 	{
 		input_file >> mesh.texture_coordinate_count;
 
@@ -83,6 +83,7 @@ namespace mesh_loader
 
 		load_vertices(inFile, *object_mesh);
 		load_colours(inFile, *object_mesh);
+		load_texture_coordinates(inFile, *object_mesh);
 		load_indices(inFile, *object_mesh);
 
 		return object_mesh;
