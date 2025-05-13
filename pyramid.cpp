@@ -24,7 +24,7 @@ void pyramid::pyramid_draw()
     glPushMatrix();
     glTranslatef(m_pyramid_position.x, m_pyramid_position.y, m_pyramid_position.z);
     glRotatef(m_pyramid_rotation, -1.0f, -1.0f, -1.0f);
-    glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_SHORT, m_object_mesh->indices);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, m_object_mesh->indices);
     glPopMatrix();
 
     glDisableClientState(GL_VERTEX_ARRAY);
